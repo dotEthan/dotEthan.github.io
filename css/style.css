@@ -1,0 +1,76 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans");
+@font-face {
+  font-family: 'js30';
+  src: url("fonts/againts.otf") format("opentype"); }
+
+@font-face {
+  font-family: 'fcc';
+  src: url("fonts/saxmono.ttf") format("truetype"); }
+
+* {
+  box-sizing: border-box; }
+
+#contain {
+  width: 100%;
+  height: 100vh;
+  color: black;
+  font-family: 'Open Sans',sans-serif; }
+
+.top {
+  height: 10vh;
+  width: 100%;
+  background: #dde;
+  position: relative;
+  display: flex;
+  justify-content: flex-end; }
+
+.top__nav {
+  width: 90%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center; }
+
+.menu {
+  position: fixed;
+  left: 0;
+  top: 0;
+  color: white;
+  height: 100vh;
+  width: 200px;
+  font-size: 1.2em;
+  background: #223;
+  padding: 20px;
+  padding-top: 0;
+  box-shadow: 4px 0 5px rgba(0, 0, 0, 0.4); }
+
+.logo {
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+
+.menu__items {
+  height: 50vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-top: 20vh; }
+
+.menu__text {
+  height: 75px; }
+
+.fcc {
+  font-family: 'fcc', sans-serif; }
+
+.js30 {
+  font-family: 'js30', sans-serif;
+  font-size: 1.2em; }
+
+.content__contain {
+  margin-left: 200px;
+  padding: 25px; }
+
+.pen {
+  width: 450px;
+  height: 450px; }
