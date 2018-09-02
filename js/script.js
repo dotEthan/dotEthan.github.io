@@ -32,9 +32,11 @@ function openSaysMe(e) {
 			}
 		} else {
 			for (let i = 0; i < areasL; i++) {
-				i <= inde
-					? areas[i].classList.add('open')
-					: areas[i].classList.remove('open');
+				if(i <= inde) {
+					areas[i].classList.add('open');
+				} else {
+					areas[i].classList.remove('open');
+				}
 			}
 		}
 	} else {

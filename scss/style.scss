@@ -1,14 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
-
-@font-face {
-  font-family: 'js30';
-  src: url('fonts/againts.otf') format('opentype');
-}
-
-@font-face {
-  font-family: 'fcc';
-  src: url('fonts/saxmono.ttf') format('truetype');
-}
+@import url('https://fonts.googleapis.com/css?family=Comfortaa');
 
 * {
   box-sizing: border-box;
@@ -19,12 +10,13 @@ $green: #579a57;
 $yellow: #f3efa6;
 $white: #eee;
 $black: #222;
+$regular-font: 'Open Sans', sans-serif;
+$header-font: 'Comfortaa', cursive;
 
 #contain {
   width: 100%;
   height: 100vh;
   color: $white;
-  font-family: 'Open Sans', sans-serif;
 }
 
 .top {
@@ -43,6 +35,7 @@ $black: #222;
   justify-content: space-around;
   align-items: center;
   font-size: 0.7em;
+  font-family: $header-font;
 
   a {
     text-decoration: none;
@@ -56,7 +49,6 @@ $black: #222;
     cursor: pointer;
 
     &:hover {
-      // background: rgba(255, 255, 255, 0.1);
 
       .words {
         position: relative;
@@ -110,7 +102,7 @@ $black: #222;
   align-items: center;
   flex: 1;
   height: 92vh;
-  background: url(../images/bg2.jpg);
+  background: url(../images/bg4.jpg);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -138,9 +130,11 @@ $black: #222;
   position: relative;
   display: flex;
 
+
   @media screen and (min-width: 768px) {
     height: 220px;
     width: 550px;
+    margin-bottom: 25vh;
   }
 
   @media screen and (min-width: 1024px) {
@@ -154,7 +148,7 @@ $black: #222;
   }
 
   @media screen and (min-width: 1600px) {
-    margin-bottom: 10vh;
+    margin-bottom: 25vh;
   }
 }
 
@@ -370,20 +364,37 @@ $black: #222;
   align-items: center;
   flex-direction: column;
   transition: all 0.5s ease-in-out;
-  background: $green;
+  background: #56756d; // #cdda93
   cursor: pointer;
-  color: $road;
+  color: $white;
   font-size: 0.7em;
   z-index: 2;
+  font-family: $header-font;
+
+  &.sptitle {
+    background: #416063; // ##7faf6b
+  }
+  
+
+  &.csstitle {
+    background: #2d4452; // $green
+  } 
 
   &:hover {
-    background: $yellow;
+    background: lighten(#56756d, 10%);
+
+    &.sptitle {
+      background: lighten(#416063, 10%);
+    }
+  
+    &.csstitle {
+      background: lighten(#2d4452, 10%);
+    } 
   }
 
   @media screen and (min-width: 768px) {
     height: 92vh;
     width: 3.5vw;
-    border: 1px solid $road;
     font-size: 1em;
   }
 }
@@ -401,6 +412,7 @@ $black: #222;
 
 //js30
 #sp-area {
+
   @media screen and (min-width: 768px) {
     right: -83vw;
 
@@ -415,7 +427,7 @@ $black: #222;
     right: -86.5vw;
 
     &.open {
-      transform: translateX(-86.5vw);
+      transform: translateX(-86.6vw);
     }
   }
 }
@@ -442,7 +454,7 @@ $black: #222;
   align-items: center;
   flex-direction: column;
   overflow: hidden;
-  overflow-x: scroll;
+  overflow-y: scroll;
 
   &.open {
     transform: none;
@@ -490,25 +502,43 @@ $black: #222;
 }
 
 .pens__contain {
-  display: flex;
+  display: grid;
+  grid-template-column: 1fr 1fr;
+  grid-auto-column: 1fr 1fr;
   align-items: center;
   height: 100%;
   width: auto;
 }
 
 .pens__column {
-  padding: 50px;
-  height: 100%;
+  padding: 0 50px 50px;
   width: auto;
   display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1.5fr 1fr;
+  grid-template-columns: 1fr 1fr;
   justify-items: center;
+
+  &:nth-child(1) {
+    padding-top: 50px;
+  }
+
+  &.sp--pens {
+    grid-template-rows: 1fr 1fr;
+    align-items: center;
+  }
+
+  &.code--pens {
+    grid-template-rows: 1fr 1fr;
+    align-items: center;    
+  }
 }
 
-.site__screen img {
-  max-width: 100%;
-  max-height: 450px;
+.site__screen {
+  width: 100%;
+
+  img {
+    max-width: 100%;
+    max-height: 450px;
+  }
 }
 
 .pen--lg {
@@ -517,8 +547,8 @@ $black: #222;
 }
 
 .pen--sm {
-  width: 400px;
-  height: 400px;
+  width: 350px;
+  height: 350px;
 }
 
 .pen__texts {
@@ -530,11 +560,22 @@ $black: #222;
 
 .pen__text {
   margin: 25px 0;
-}
+  font-family: $regular-font;
 
-.pen__title {
-  font-weight: bold;
-  text-align: center;
+  &.pen__title {
+    font-weight: bold;
+    text-align: center;
+    font-family: $header-font;
+    font-size: 1.3em;
+    margin-bottom: 0;
+  }
+
+  &.pen__title--sub {
+    font-size: 0.8em;
+    margin-top: 0;
+    text-align: center;
+    font-style: italic;
+  }
 }
 
 .title {

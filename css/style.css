@@ -1,20 +1,12 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans");
-@font-face {
-  font-family: 'js30';
-  src: url("fonts/againts.otf") format("opentype"); }
-
-@font-face {
-  font-family: 'fcc';
-  src: url("fonts/saxmono.ttf") format("truetype"); }
-
+@import url("https://fonts.googleapis.com/css?family=Comfortaa");
 * {
   box-sizing: border-box; }
 
 #contain {
   width: 100%;
   height: 100vh;
-  color: #eee;
-  font-family: 'Open Sans', sans-serif; }
+  color: #eee; }
 
 .top {
   height: 8vh;
@@ -30,7 +22,8 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  font-size: 0.7em; }
+  font-size: 0.7em;
+  font-family: "Comfortaa", cursive; }
   .top__nav a {
     text-decoration: none;
     color: #e1e1e1; }
@@ -78,7 +71,7 @@
   align-items: center;
   flex: 1;
   height: 92vh;
-  background: url(../images/bg2.jpg);
+  background: url(../images/bg4.jpg);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -103,7 +96,8 @@
   @media screen and (min-width: 768px) {
     .container {
       height: 220px;
-      width: 550px; } }
+      width: 550px;
+      margin-bottom: 25vh; } }
   @media screen and (min-width: 1024px) {
     .container {
       height: 320px;
@@ -114,7 +108,7 @@
       width: 1100px; } }
   @media screen and (min-width: 1600px) {
     .container {
-      margin-bottom: 10vh; } }
+      margin-bottom: 25vh; } }
 
 .gallery {
   display: grid;
@@ -293,18 +287,26 @@
   align-items: center;
   flex-direction: column;
   transition: all 0.5s ease-in-out;
-  background: #579a57;
+  background: #56756d;
   cursor: pointer;
-  color: #263039;
+  color: #eee;
   font-size: 0.7em;
-  z-index: 2; }
+  z-index: 2;
+  font-family: "Comfortaa", cursive; }
+  .title__contain.sptitle {
+    background: #416063; }
+  .title__contain.csstitle {
+    background: #2d4452; }
   .title__contain:hover {
-    background: #f3efa6; }
+    background: #6c9288; }
+    .title__contain:hover.sptitle {
+      background: #557e82; }
+    .title__contain:hover.csstitle {
+      background: #3f5f73; }
   @media screen and (min-width: 768px) {
     .title__contain {
       height: 92vh;
       width: 3.5vw;
-      border: 1px solid #263039;
       font-size: 1em; } }
 
 @media screen and (min-width: 768px) {
@@ -323,7 +325,7 @@
   #css-area {
     right: -86.5vw; }
     #css-area.open {
-      transform: translateX(-86.5vw); } }
+      transform: translateX(-86.6vw); } }
 
 .hide {
   display: none; }
@@ -344,7 +346,7 @@
   align-items: center;
   flex-direction: column;
   overflow: hidden;
-  overflow-x: scroll; }
+  overflow-y: scroll; }
   .drawer.open {
     transform: none;
     overflow: scroll; }
@@ -379,31 +381,41 @@
   margin-top: 5vw; }
 
 .pens__contain {
-  display: flex;
+  display: grid;
+  grid-template-column: 1fr 1fr;
+  grid-auto-column: 1fr 1fr;
   align-items: center;
   height: 100%;
   width: auto; }
 
 .pens__column {
-  padding: 50px;
-  height: 100%;
+  padding: 0 50px 50px;
   width: auto;
   display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1.5fr 1fr;
+  grid-template-columns: 1fr 1fr;
   justify-items: center; }
+  .pens__column:nth-child(1) {
+    padding-top: 50px; }
+  .pens__column.sp--pens {
+    grid-template-rows: 1fr 1fr;
+    align-items: center; }
+  .pens__column.code--pens {
+    grid-template-rows: 1fr 1fr;
+    align-items: center; }
 
-.site__screen img {
-  max-width: 100%;
-  max-height: 450px; }
+.site__screen {
+  width: 100%; }
+  .site__screen img {
+    max-width: 100%;
+    max-height: 450px; }
 
 .pen--lg {
   width: 320px;
   height: 480px; }
 
 .pen--sm {
-  width: 400px;
-  height: 400px; }
+  width: 350px;
+  height: 350px; }
 
 .pen__texts {
   width: 500px;
@@ -412,11 +424,19 @@
   color: #223; }
 
 .pen__text {
-  margin: 25px 0; }
-
-.pen__title {
-  font-weight: bold;
-  text-align: center; }
+  margin: 25px 0;
+  font-family: "Open Sans", sans-serif; }
+  .pen__text.pen__title {
+    font-weight: bold;
+    text-align: center;
+    font-family: "Comfortaa", cursive;
+    font-size: 1.3em;
+    margin-bottom: 0; }
+  .pen__text.pen__title--sub {
+    font-size: 0.8em;
+    margin-top: 0;
+    text-align: center;
+    font-style: italic; }
 
 .title {
   transform: rotate(-90deg);
