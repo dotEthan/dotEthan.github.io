@@ -66,29 +66,10 @@ window.onload = () => {
 	const overlayImage = overlay.querySelector('img');
 	const overlayClose = overlay.querySelector('.close');
 	let nowr = [0, 0, 0, 0, 0];
-	let oriArr = [
-		1,
-		2,
-		3,
-		4,
-		5,
-		6,
-		7,
-		8,
-		9,
-		10,
-		11,
-		12,
-		13,
-		14,
-		15,
-		16,
-		17,
-		18,
-		19,
-		20
-	];
-	let numArr = [...oriArr];
+	let oriArr = [1,2,3,4,5];
+	let horzArr = [...oriArr];
+	let vertArr = [...oriArr];
+	let squareArr = [...oriArr];
 
 	document.onkeydown = function(evt) {
 		evt = evt || window.event;
@@ -104,33 +85,91 @@ window.onload = () => {
 		}
 	};
 
-	// number array of numbers and then remove each when used, replenish when done.
+	// array of numbers and then remove each when used, replenish when done.
 	function generateHTML([h, v]) {
-		return `
-        <div class="item h${h} v${v}">
-          <img src="images/${randomUniqueNumber(oriArr.length)}.jpg">
-          <div class="item__overlay">
-            <button>View ↪</button>
-          </div>
-        </div>
-      `;
+		if (h > v) {
+			return `
+		        <div class="item h${h} v${v}">
+		          <img src="images/horz/${randomUniqueNumber(oriArr.length,'horz')}.jpg">
+		          <div class="item__overlay">
+		            <button>View ↪</button>
+		          </div>
+		        </div>
+		      `;
+		} else if (v > h) {
+			return `
+		        <div class="item h${h} v${v}">
+		          <img src="images/vert/${randomUniqueNumber(oriArr.length,'vert')}.jpg">
+		          <div class="item__overlay">
+		            <button>View ↪</button>
+		          </div>
+		        </div>
+		      `;			
+		} else {
+			return `
+		        <div class="item h${h} v${v}">
+		          <img src="images/sq/${randomUniqueNumber(oriArr.length,'square')}.jpg">
+		          <div class="item__overlay">
+		            <button>View ↪</button>
+		          </div>
+		        </div>
+		      `;
+		}
 	}
 
-	function randomUniqueNumber(limit) {
+	function randomUniqueNumber(limit,type) {
 		let thisNum = 0;
+		if (type === 'vert') {
+			console.log('vert');
+			console.log(vertArr);
 
-		if (numArr.length === 0) numArr = [...oriArr];
+			if (vertArr.length === 0) vertArr = [...oriArr];
 
-		do {
-			thisNum = Math.floor(Math.random() * limit) + 1;
-		} while (!numArr.includes(thisNum));
+			do {
+				thisNum = Math.floor(Math.random() * limit) + 1;
+			} while (!vertArr.includes(thisNum));
 
-		const numInd = numArr.indexOf(thisNum);
+			const numInd = vertArr.indexOf(thisNum);
 
-		numArr.splice(numInd, 1);
+			vertArr.splice(numInd, 1);
 
-		return thisNum;
+			return thisNum;
+
+		} else if (type === 'horz') {
+			console.log('horz');
+			console.log(horzArr);
+
+			if (horzArr.length === 0) horzArr = [...oriArr];
+
+			do {
+				thisNum = Math.floor(Math.random() * limit) + 1;
+			} while (!horzArr.includes(thisNum));
+
+			const numInd = horzArr.indexOf(thisNum);
+
+			horzArr.splice(numInd, 1);
+
+			return thisNum;
+
+		} else if (type === 'square') {	
+			console.log('quare');
+			console.log(squareArr);
+
+			if (squareArr.length === 0) squareArr = [...oriArr];
+
+			do {
+				thisNum = Math.floor(Math.random() * limit) + 1;
+			} while (!squareArr.includes(thisNum));
+
+			const numInd = squareArr.indexOf(thisNum);
+
+			squareArr.splice(numInd, 1);
+
+			return thisNum;
+
+		}
 	}
+
 
 	function randomNumber(limit) {
 		return Math.floor(Math.random() * limit) + 1;
@@ -146,27 +185,10 @@ window.onload = () => {
 		overlay.classList.remove('open');
 	}
 
-	const digits = Array.from({ length: 30 }, () => [
+	const digits = Array.from({ length: 15 }, () => [
 		randomNumber(3),
 		randomNumber(3)
-	]).concat([
-		[1, 1],
-		[1, 1],
-		[1, 1],
-		[1, 1],
-		[1, 1],
-		[1, 1],
-		[1, 1],
-		[1, 1],
-		[1, 1],
-		[1, 1],
-		[1, 1],
-		[1, 1],
-		[1, 1],
-		[1, 1],
-		[1, 1],
-		[1, 1]
-	]);
+	]).concat([[1, 1],[1, 1],[1, 1],[1, 1],[1, 1]]);
 
 	const html = digits.map(generateHTML).join('');
 

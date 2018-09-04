@@ -5,11 +5,14 @@
   box-sizing: border-box;
 }
 
-$road: #263039;
+$darkestblue: #1c2630;
 $green: #579a57;
 $yellow: #f3efa6;
 $white: #eee;
 $black: #222;
+$lightblue: #56756d;
+$medblue: #416063;
+$darkblue: #2d4452;
 $regular-font: 'Open Sans', sans-serif;
 $header-font: 'Comfortaa', cursive;
 
@@ -22,7 +25,7 @@ $header-font: 'Comfortaa', cursive;
 .top {
   height: 8vh;
   width: 100%;
-  background: $road;
+  background: $darkestblue;
   position: relative;
   display: flex;
   justify-content: center;
@@ -48,22 +51,93 @@ $header-font: 'Comfortaa', cursive;
     position: relative;
     cursor: pointer;
 
+    &:before, &:after {
+      content: '';
+      position: absolute;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: $white;
+      transition: 0s; 
+    }
+
+    &:before {
+      bottom: 0;
+    }
+
+    &:after {
+      top: 0;
+    }
+
+    .top__nav--extra {
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+
+      &:before, &:after {
+        content: '';
+        position: absolute;
+        right: 0;
+        width: 0;
+        height: 2px;
+        background-color: $white;
+        transition: width 0.3s ease-in-out;
+      }
+
+      &:before {
+        bottom: 0;
+      }
+
+      &:after {
+        top: 0;
+      }
+    }
+
+    .nav__icons {
+      display: inline-block;
+      padding-right: 10px;
+      transform: translate3d(-10px,0,0);
+      opacity: 0;
+      transition: all .3s linear;
+    }
+
     &:hover {
 
-      .words {
-        position: relative;
+      &:before {
+        width: 100%;
+        transition: width 0.3s ease-in-out;
+        background-color: $white;
+      }
+
+      &:after {
+        width: 100%;
+        transition: width 0.3s ease-in-out;
+        background-color: $white;
+      }
+
+      .top__nav--extra {
+
+
+        &:before {
+          width: 100%;
+          transition: 0s;
+          background-color: transparent; 
+        }
 
         &:after {
-          content: '';
-          display: block;
-          width: calc(100% - 6px);
-          background-color: rgba($green, 0.3);
-          height: 2px;
-          position: absolute;
-          left: 3px;
-          bottom: -2px;
+          width: 100%;
+          transition: 0s;
+          background-color: transparent; 
         }
       }
+
+      .nav__icons {
+        opacity: 1;
+        transform: translate3d(0,0,0);
+      }
+
     }
 
     &.ethan {
@@ -73,6 +147,15 @@ $header-font: 'Comfortaa', cursive;
 
       &:hover {
         background: none;
+
+        &:before {
+          width: 0;
+        }
+
+        &:after {
+          width: 0;
+        }
+
       }
     }
   }
@@ -132,18 +215,18 @@ $header-font: 'Comfortaa', cursive;
 
 
   @media screen and (min-width: 768px) {
-    height: 220px;
+    height: 215px;
     width: 550px;
     margin-bottom: 25vh;
   }
 
   @media screen and (min-width: 1024px) {
-    height: 320px;
+    height: 315px;
     width: 800px;
   }
 
   @media screen and (min-width: 1200px) {
-    height: 420px;
+    height: 415px;
     width: 1100px;
   }
 
@@ -364,7 +447,7 @@ $header-font: 'Comfortaa', cursive;
   align-items: center;
   flex-direction: column;
   transition: all 0.5s ease-in-out;
-  background: #56756d; // #cdda93
+  background: $lightblue; 
   cursor: pointer;
   color: $white;
   font-size: 0.7em;
@@ -372,23 +455,22 @@ $header-font: 'Comfortaa', cursive;
   font-family: $header-font;
 
   &.sptitle {
-    background: #416063; // ##7faf6b
+    background: $medblue; 
   }
-  
 
   &.csstitle {
-    background: #2d4452; // $green
+    background: $darkblue; 
   } 
 
   &:hover {
-    background: lighten(#56756d, 10%);
+    background: lighten($lightblue, 10%);
 
     &.sptitle {
-      background: lighten(#416063, 10%);
+      background: lighten($medblue, 10%);
     }
   
     &.csstitle {
-      background: lighten(#2d4452, 10%);
+      background: lighten($darkblue, 10%);
     } 
   }
 
@@ -451,7 +533,6 @@ $header-font: 'Comfortaa', cursive;
   transform: translateX(-100%);
   transition: all 0.5s ease-in-out;
   display: flex;
-  align-items: center;
   flex-direction: column;
   overflow: hidden;
   overflow-y: scroll;
@@ -490,50 +571,66 @@ $header-font: 'Comfortaa', cursive;
 }
 
 #css {
+  justify-content: center;
   @media screen and (min-width: 768px) {
     left: 0px;
   }
 }
 
-.drawer__title {
-  color: $road;
-  text-align: center;
-  margin-top: 5vw;
-}
-
 .pens__contain {
   display: grid;
-  grid-template-column: 1fr 1fr;
-  grid-auto-column: 1fr 1fr;
+  grid-template-columns: 1fr;
+  justify-items: center;
   align-items: center;
   height: 100%;
-  width: auto;
+  width: 100%;
 }
 
 .pens__column {
-  padding: 0 50px 50px;
-  width: auto;
+  padding: 50px;
+  width: 100%;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  justify-items: center;
+  grid-template-columns: 1fr 1.5fr;
+  place-items: center;
+  position: relative;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 2px;
+    border-radius: 1px;
+    background-color: rgba($darkestblue,.5);
+  }
 
   &:nth-child(1) {
     padding-top: 50px;
-  }
 
-  &.sp--pens {
-    grid-template-rows: 1fr 1fr;
-    align-items: center;
-  }
-
-  &.code--pens {
-    grid-template-rows: 1fr 1fr;
-    align-items: center;    
+    &:before {
+      background-color: transparent;
+    }
   }
 }
 
+.codepens__contain {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 75px;
+  place-items: center;
+  align-items: center;
+  width: 80%;
+  padding: 50px;
+}
+
+.code--pens {
+  z-index: 2;
+  position: relative;
+  box-shadow: 1px 1px 4px black;
+  height: 400px;
+}
+
 .site__screen {
-  width: 100%;
 
   img {
     max-width: 100%;
@@ -547,14 +644,37 @@ $header-font: 'Comfortaa', cursive;
 }
 
 .pen--sm {
-  width: 350px;
-  height: 350px;
+  width: 400px;
+}
+
+.day__tab {
+  position: absolute;
+  top: -50px;
+  left: -45px;
+  width: 75px;
+  height: 60px;
+  border-radius: 5px;
+  background-color: $lightblue;
+  transform: rotate(-90deg) translate3d(0,0,0);
+  transform-origin: right bottom 0;
+  -webkit-transform-origin: right bottom 0;
+  padding: 10px;
+  text-align: center;
+  font-size: 0.9em;
+  z-index: -1;
+  font-family: $header-font;
+  transition: .3s all linear;
+  color: $white;
+  text-decoration: none;
+
+  &:hover {
+    transform: rotate(-90deg) translate3d(0,-5px,0);
+  }
 }
 
 .pen__texts {
-  width: 500px;
+  width: 75%;
   height: 265px;
-  padding: 10px;
   color: #223;
 }
 
@@ -586,7 +706,7 @@ $header-font: 'Comfortaa', cursive;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 1.2em;
+  font-size: 1.1em;
 
   @media screen and (min-width: 768px) {
     width: 92vh;
