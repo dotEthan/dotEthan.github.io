@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans');
-@import url('https://fonts.googleapis.com/css?family=Comfortaa');
+@import url("https://fonts.googleapis.com/css?family=Open+Sans");
+@import url("https://fonts.googleapis.com/css?family=Comfortaa");
 
 * {
   box-sizing: border-box;
@@ -13,8 +13,8 @@ $black: #222;
 $lightblue: #56756d;
 $medblue: #416063;
 $darkblue: #2d4452;
-$regular-font: 'Open Sans', sans-serif;
-$header-font: 'Comfortaa', cursive;
+$regular-font: "Open Sans", sans-serif;
+$header-font: "Comfortaa", cursive;
 
 #contain {
   width: 100%;
@@ -51,14 +51,15 @@ $header-font: 'Comfortaa', cursive;
     position: relative;
     cursor: pointer;
 
-    &:before, &:after {
-      content: '';
+    &:before,
+    &:after {
+      content: "";
       position: absolute;
       left: 0;
       width: 0;
       height: 2px;
       background-color: $white;
-      transition: 0s; 
+      transition: 0s;
     }
 
     &:before {
@@ -76,8 +77,9 @@ $header-font: 'Comfortaa', cursive;
       left: 0;
       bottom: 0;
 
-      &:before, &:after {
-        content: '';
+      &:before,
+      &:after {
+        content: "";
         position: absolute;
         right: 0;
         width: 0;
@@ -98,13 +100,12 @@ $header-font: 'Comfortaa', cursive;
     .nav__icons {
       display: inline-block;
       padding-right: 10px;
-      transform: translate3d(-10px,0,0);
+      transform: translate3d(-10px, 0, 0);
       opacity: 0;
-      transition: all .3s linear;
+      transition: all 0.3s linear;
     }
 
     &:hover {
-
       &:before {
         width: 100%;
         transition: width 0.3s ease-in-out;
@@ -118,26 +119,23 @@ $header-font: 'Comfortaa', cursive;
       }
 
       .top__nav--extra {
-
-
         &:before {
           width: 100%;
           transition: 0s;
-          background-color: transparent; 
+          background-color: transparent;
         }
 
         &:after {
           width: 100%;
           transition: 0s;
-          background-color: transparent; 
+          background-color: transparent;
         }
       }
 
       .nav__icons {
         opacity: 1;
-        transform: translate3d(-2px,0,0);
+        transform: translate3d(-2px, 0, 0);
       }
-
     }
 
     &.ethan {
@@ -155,7 +153,6 @@ $header-font: 'Comfortaa', cursive;
         &:after {
           width: 0;
         }
-
       }
     }
   }
@@ -212,7 +209,6 @@ $header-font: 'Comfortaa', cursive;
   overflow: hidden;
   position: relative;
   display: flex;
-
 
   @media screen and (min-width: 768px) {
     height: 215px;
@@ -447,7 +443,7 @@ $header-font: 'Comfortaa', cursive;
   align-items: center;
   flex-direction: column;
   transition: all 0.5s ease-in-out;
-  background: $lightblue; 
+  background: $lightblue;
   cursor: pointer;
   color: $white;
   font-size: 0.7em;
@@ -455,12 +451,12 @@ $header-font: 'Comfortaa', cursive;
   font-family: $header-font;
 
   &.sptitle {
-    background: $medblue; 
+    background: $medblue;
   }
 
   &.csstitle {
-    background: $darkblue; 
-  } 
+    background: $darkblue;
+  }
 
   &:hover {
     background: lighten($lightblue, 10%);
@@ -468,10 +464,10 @@ $header-font: 'Comfortaa', cursive;
     &.sptitle {
       background: lighten($medblue, 10%);
     }
-  
+
     &.csstitle {
       background: lighten($darkblue, 10%);
-    } 
+    }
   }
 
   @media screen and (min-width: 768px) {
@@ -494,7 +490,6 @@ $header-font: 'Comfortaa', cursive;
 
 //js30
 #sp-area {
-
   @media screen and (min-width: 768px) {
     right: -83vw;
 
@@ -595,13 +590,13 @@ $header-font: 'Comfortaa', cursive;
   position: relative;
 
   &:before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     width: 50%;
     height: 2px;
     border-radius: 1px;
-    background-color: rgba($darkestblue,.5);
+    background-color: rgba($darkestblue, 0.5);
   }
 
   &:nth-child(1) {
@@ -631,7 +626,6 @@ $header-font: 'Comfortaa', cursive;
 }
 
 .site__screen {
-
   img {
     max-width: 100%;
     max-height: 450px;
@@ -655,7 +649,7 @@ $header-font: 'Comfortaa', cursive;
   height: 60px;
   border-radius: 5px;
   background-color: $lightblue;
-  transform: rotate(-90deg) translate3d(0,0,0);
+  transform: rotate(-90deg) translate3d(0, 0, 0);
   transform-origin: right bottom 0;
   -webkit-transform-origin: right bottom 0;
   padding: 10px;
@@ -663,12 +657,12 @@ $header-font: 'Comfortaa', cursive;
   font-size: 0.9em;
   z-index: -1;
   font-family: $header-font;
-  transition: .3s all linear;
+  transition: 0.3s all linear;
   color: $white;
   text-decoration: none;
 
   &:hover {
-    transform: rotate(-90deg) translate3d(0,-5px,0);
+    transform: rotate(-90deg) translate3d(0, -5px, 0);
   }
 }
 
@@ -696,6 +690,10 @@ $header-font: 'Comfortaa', cursive;
     text-align: center;
     font-style: italic;
   }
+}
+
+.pen__text--project {
+  margin-bottom: 2%;
 }
 
 .title {
