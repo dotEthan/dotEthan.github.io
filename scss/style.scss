@@ -54,9 +54,14 @@ $header-font: "Comfortaa", cursive;
     border-radius: 5px;
     position: relative;
     cursor: pointer;
-    font-size: 2vw;
+    font-size: 0.8em;
 
     @media screen and (min-width: 768px) {
+      font-size: 0.9em;
+      padding: 10px;
+    }
+
+    @media screen and (min-width: 1024px) {
       font-size: 1em;
       padding: 10px;
     }
@@ -626,6 +631,8 @@ $header-font: "Comfortaa", cursive;
   justify-items: center;
   align-items: start;
   width: 100%;
+  position: absolute;
+  top: 0;
 
   @media screen and (min-width: 768px) {
     align-items: center;
@@ -641,6 +648,16 @@ $header-font: "Comfortaa", cursive;
   align-items: start;
   position: relative;
 
+  @media screen and (min-width: 768px) {
+    grid-template-columns: 1fr 1.5fr;
+    grid-template-rows: auto;
+    place-items: center;
+  }
+
+  @media screen and (min-width: 1200px) {
+    padding: 50px;
+  }
+
   &:before {
     content: "";
     position: absolute;
@@ -654,20 +671,13 @@ $header-font: "Comfortaa", cursive;
   &:nth-child(1) {
     padding-top: 25px;
 
-    @media screen and (min-width: 768px) {
+    @media screen and (min-width: 1200px) {
       padding-top: 50px;
     }
 
     &:before {
       background-color: transparent;
     }
-  }
-
-  @media screen and (min-width: 768px) {
-    grid-template-columns: 1fr 1.5fr;
-    grid-template-rows: auto;
-    padding: 50px;
-    place-items: center;
   }
 }
 
@@ -731,13 +741,10 @@ $header-font: "Comfortaa", cursive;
 
 .pen__texts {
   width: 95%;
-  height: auto;
   color: #223;
 
   @media screen and (min-width: 768px) {
     width: 90%;
-    font-size: 1rem;
-    height: 265px;
   }
 }
 
@@ -757,6 +764,10 @@ $header-font: "Comfortaa", cursive;
     margin-bottom: 0;
 
     @media screen and (min-width: 768px) {
+      font-size: 1.5em;
+    }
+
+    @media screen and (min-width: 1200px) {
       font-size: 1.8em;
     }
   }
@@ -768,6 +779,10 @@ $header-font: "Comfortaa", cursive;
     font-style: italic;
 
     @media screen and (min-width: 768px) {
+      font-size: 0.9em;
+    }
+
+    @media screen and (min-width: 1200px) {
       font-size: 1em;
     }
   }
@@ -776,6 +791,10 @@ $header-font: "Comfortaa", cursive;
     font-size: 0.8em;
 
     @media screen and (min-width: 768px) {
+      font-size: 0.9em;
+    }
+
+    @media screen and (min-width: 1200px) {
       font-size: 1em;
     }
   }
