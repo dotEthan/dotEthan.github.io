@@ -1,246 +1,258 @@
-'use strict';
-
+"use strict";
 
 //CLICKING BETWEEN THE PANELS
 
-
-const drawers = document.querySelectorAll('.drawer');
-const titles = document.querySelectorAll('.title__contain');
-const areas = document.querySelectorAll('.area__contain');
+const drawers = document.querySelectorAll(".drawer");
+const titles = document.querySelectorAll(".title__contain");
+const areas = document.querySelectorAll(".area__contain");
 const areasL = areas.length;
 
-titles.forEach(title => title.addEventListener('click', openSaysMe));
+titles.forEach(title => title.addEventListener("click", openSaysMe));
 
 function openSaysMe(e) {
-	const id = '#' + e.target.id;
-	const titleId = '#' + e.target.id;
-	const ele = document.querySelector(
-		id.replace('-area', '').replace('-title', '')
-	);
-	let inde;
+  const id = "#" + e.target.id;
+  const titleId = "#" + e.target.id;
+  const ele = document.querySelector(
+    id.replace("-area", "").replace("-title", "")
+  );
+  let inde;
 
-	const titleEle = document.querySelector(id.replace('-title', '-area'));
+  const titleEle = document.querySelector(id.replace("-title", "-area"));
 
-	if (Modernizr.mq('(min-width: 768px)')) {
-		// Big Screens
+  if (Modernizr.mq("(min-width: 768px)")) {
+    // Big Screens
 
-		areas.forEach((area, i) => {
-			if (titleEle.id === area.id) {
-				inde = i;
-			}
-		});
+    areas.forEach((area, i) => {
+      if (titleEle.id === area.id) {
+        inde = i;
+      }
+    });
 
-		if (areas[inde].classList.contains('open')) {
-			for (let i = areasL - 1; i >= inde; i--) {
-				areas[i].classList.remove('open');
-			}
-		} else {
-			for (let i = 0; i < areasL; i++) {
-				if(i <= inde) {
-					areas[i].classList.add('open');
-				} else {
-					areas[i].classList.remove('open');
-				}
-			}
-		}
-	} else {
-		// Small screens
-		let same = false;
+    if (areas[inde].classList.contains("open")) {
+      for (let i = areasL - 1; i >= inde; i--) {
+        areas[i].classList.remove("open");
+      }
+    } else {
+      for (let i = 0; i < areasL; i++) {
+        if (i <= inde) {
+          areas[i].classList.add("open");
+        } else {
+          areas[i].classList.remove("open");
+        }
+      }
+    }
+  } else {
+    // Small screens
+    let same = false;
 
-		drawers.forEach(drawer => {
-			if (e.target.id && ele.classList.contains('open')) {
-				ele.classList.remove('open');
-				same = true;
-				return;
-			}
+    drawers.forEach(drawer => {
+      if (e.target.id && ele.classList.contains("open")) {
+        ele.classList.remove("open");
+        same = true;
+        return;
+      }
 
-			if (e.target.id && drawer.classList.contains('open')) {
-				drawer.classList.remove('open');
-			}
-		});
+      if (e.target.id && drawer.classList.contains("open")) {
+        drawer.classList.remove("open");
+      }
+    });
 
-		!same ? ele.classList.add('open') : (same = false);
-	}
+    !same ? ele.classList.add("open") : (same = false);
+  }
 }
 
+// Create Gallery and auto import images
+
 window.onload = () => {
-	const gallery = document.querySelector('.gallery');
-	const container = document.querySelector('.container');
-	const overlay = document.querySelector('.overlay');
-	const overlayImage = overlay.querySelector('img');
-	const overlayClose = overlay.querySelector('.close');
-	const windowSize = (Modernizr.mq('(min-width: 768px)')) ? 'big' : 'small';
-	let nowr = [0, 0, 0, 0, 0];
-	let oriArr = [1,2,3,4,5];
-	let horzArr = [...oriArr];
-	let vertArr = [...oriArr];
-	let squareArr = [...oriArr];
-	let imgArr = [[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,1,1,0,0,0,0],[0,0,0,0,1,1,0,0,0,0],[0,0,0,0,0,0,0,0,0,0]]; 
-	let imgArrSm = [[0,0,0,0],[0,0,0,0],[0,1,1,0],[0,1,1,0],[0,0,0,0],[0,0,0,0]];
-	let testArr = (Modernizr.mq('(min-width: 768px)')) ? [...imgArr] : [...imgArrSm];
+  const gallery = document.querySelector(".gallery");
+  const container = document.querySelector(".container");
+  const overlay = document.querySelector(".overlay");
+  const overlayImage = overlay.querySelector("img");
+  const overlayClose = overlay.querySelector(".close");
+  const windowSize = Modernizr.mq("(min-width: 768px)") ? "big" : "small";
+  let nowr = [0, 0, 0, 0, 0];
+  let oriArr = [1, 2, 3, 4, 5];
+  let horzArr = [...oriArr];
+  let vertArr = [...oriArr];
+  let squareArr = [...oriArr];
+  let imgArr = [
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 1, 1, 0, 0, 0, 0],
+    [0, 0, 0, 0, 1, 1, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+  ];
+  let imgArrSm = [
+    [0, 0, 0, 0],
+    [0, 0, 0, 0],
+    [0, 1, 1, 0],
+    [0, 1, 1, 0],
+    [0, 0, 0, 0],
+    [0, 0, 0, 0]
+  ];
+  let testArr = Modernizr.mq("(min-width: 768px)")
+    ? [...imgArr]
+    : [...imgArrSm];
 
+  // Close on Esc keydown
 
-	document.onkeydown = function(evt) {
-		evt = evt || window.event;
-		var isEscape = false;
-		if ('key' in evt) {
-			isEscape = evt.key == 'Escape' || evt.key == 'Esc';
-		} else {
-			isEscape = evt.keyCode == 27;
-		}
+  document.onkeydown = function(evt) {
+    evt = evt || window.event;
+    var isEscape = false;
+    if ("key" in evt) {
+      isEscape = evt.key == "Escape" || evt.key == "Esc";
+    } else {
+      isEscape = evt.keyCode == 27;
+    }
 
-		if (isEscape) {
-			overlay.classList.remove('open');
-		}
-	};
+    if (isEscape) {
+      overlay.classList.remove("open");
+    }
+  };
 
-	// array of numbers and then remove each when used, replenish when done.
-	function generateHTML([h, v]) {
-		let folder = "square"
+  // Create HTML for each Picture
 
-		if(h > v) folder = 'horz';
-		if(h > v) folder = 'vert';
-		return `
+  function generateHTML([h, v]) {
+    let folder = "square";
+
+    if (h > v) folder = "horz";
+    if (h > v) folder = "vert";
+    return `
 	        <div class="item h${h} v${v}">
-	          <img src="images/${folder}/${randomUniqueNumber(oriArr.length, folder)}.jpg">
+	          <img src="images/${folder}/${randomUniqueNumber(
+      oriArr.length,
+      folder
+    )}.jpg">
 	          <div class="item__overlay">
 	            <button>View ↪</button>
 	          </div>
 	        </div>
 	      `;
-	}
+  }
 
-	function updateArr(arrName, limit) {
-		let thisNum = 0;
+  // Ensure pictures aren't duplicated too often
 
-		do {
-			thisNum = Math.floor(Math.random() * limit) + 1;
-		} while (!arrName.includes(thisNum));
+  function updateArr(arrName, limit) {
+    let thisNum = 0;
 
-		const numInd = arrName.indexOf(thisNum);
-		arrName.splice(numInd, 1);
+    do {
+      thisNum = Math.floor(Math.random() * limit) + 1;
+    } while (!arrName.includes(thisNum));
 
-		return thisNum;
-	}
+    const numInd = arrName.indexOf(thisNum);
+    arrName.splice(numInd, 1);
 
-	function randomUniqueNumber(limit,type) {
+    return thisNum;
+  }
 
-		if (type === 'vert') {
+  function randomUniqueNumber(limit, type) {
+    if (type === "vert") {
+      if (vertArr.length === 0) vertArr = [...oriArr];
 
-			if (vertArr.length === 0) vertArr = [...oriArr];
+      return updateArr(vertArr, limit);
+    } else if (type === "horz") {
+      if (horzArr.length === 0) horzArr = [...oriArr];
 
-			return updateArr(vertArr, limit);
+      return updateArr(horzArr, limit);
+    } else if (type === "square") {
+      if (squareArr.length === 0) squareArr = [...oriArr];
 
-		} else if (type === 'horz') {
+      return updateArr(squareArr, limit);
+    }
+  }
 
-			if (horzArr.length === 0) horzArr = [...oriArr];
+  function randomNumber(limit) {
+    return Math.floor(Math.random() * limit) + 1;
+  }
 
-			return updateArr(horzArr, limit);
+  function showPic(e) {
+    const src = e.currentTarget.querySelector("img").src;
+    overlayImage.src = src;
+    overlay.classList.add("open");
+  }
 
-		} else if (type === 'square') {	
+  function closeImage() {
+    overlay.classList.remove("open");
+  }
 
-			if (squareArr.length === 0) squareArr = [...oriArr];
+  const digits = Array.from({ length: 20 }, randomNumArr);
 
-			return updateArr(squareArr, limit);
+  function randomNumArr() {
+    let testDigits = [randomNumber(3), randomNumber(3)],
+      fullRow = 0,
+      full = false;
 
-		}
-	}
+    testArr.forEach(row => {
+      if (!row.includes(0)) {
+        fullRow++;
+      }
+      if (fullRow === 4) {
+        full = true;
+      }
+    });
 
+    if (willFit(testDigits[0], testDigits[1]) && !full) {
+      return testDigits;
+    } else if (full) {
+      return [0, 0];
+    } else {
+      testDigits = randomNumArr();
+    }
+    return testDigits;
+  }
 
-	function randomNumber(limit) {
-		return Math.floor(Math.random() * limit) + 1;
-	}
+  function willFit(h, v) {
+    let testH = h,
+      testV = v,
+      fits = false;
 
-	function showPic(e) {
-		const src = e.currentTarget.querySelector('img').src;
-		overlayImage.src = src;
-		overlay.classList.add('open');
-	}
+    rowLoop: for (let i = 0; i <= testArr.length - 1; i++) {
+      columnLoop: for (let j = 0; j <= testArr[i].length - 1; j++) {
+        if (testArr[i][j] === 0) {
+          let throwV = testV;
 
-	function closeImage() {
-		overlay.classList.remove('open');
-	}
+          while (throwV >= 1) {
+            let throwH = testH;
 
-	const digits = Array.from({ length: 20 }, randomNumArr);
+            while (throwH >= 1) {
+              if (
+                testArr[i + (throwV - 1)] === undefined ||
+                testArr[i + (throwV - 1)][j + (throwH - 1)] !== 0
+              ) {
+                continue columnLoop;
+              }
 
-	function randomNumArr () {
-		let testDigits =  [ randomNumber(3), randomNumber(3) ], fullRow = 0, full = false;
- 
-		testArr.forEach((row) => {
-			if(!row.includes(0)) {
-				fullRow++;
-			}
-			if(fullRow === 4) {
-				full = true;
-			}
-		});
+              throwH--;
+            }
 
-		if (willFit(testDigits[0], testDigits[1]) && !full) {
-			return testDigits;	
-		} else if (full) {
-			return [0,0];
-		} else {
-			testDigits = randomNumArr();
-		}
-		return testDigits;
+            throwV--;
+          }
 
-	}
+          fits = true;
 
+          while (v >= 1) {
+            let throwH = h;
+            while (throwH >= 1) {
+              if (testArr[i + (v - 1)] === undefined) continue columnLoop;
+              testArr[i + (v - 1)][j + (throwH - 1)] = 1;
+              throwH--;
+            }
+            v--;
+          }
+          break rowLoop;
+        }
+      }
+    }
+    return fits;
+  }
 
-	
-	function willFit(h,v) {
-		let testH = h, testV = v, fits = false;
+  const html = digits.map(generateHTML).join("");
 
-		rowLoop: 
-		for(let i = 0; i <= testArr.length-1; i ++) {
-			columnLoop:
-			for(let j = 0; j <= testArr[i].length-1; j ++) {
+  gallery.innerHTML = gallery.innerHTML + html;
 
-				if(testArr[i][j]===0) {
-					let throwV = testV;
+  const items = document.querySelectorAll(".item");
 
-					while(throwV >= 1) {
-						let throwH = testH
+  items.forEach(item => item.addEventListener("click", showPic));
 
-						while (throwH >= 1) {
-
-							if(testArr[i + (throwV-1)] === undefined || testArr[i + (throwV-1)][j + (throwH-1)] !== 0 ) {
-								continue columnLoop;
-							}
-
-							throwH--;
-						};
-
-					throwV--
-					};
-
-					fits=true;
-
-					while(v >= 1) {
-						let throwH = h;
-						while (throwH >= 1) {
-							if(testArr[i + (v-1)] === undefined) continue columnLoop;
-							testArr[i + (v-1)][j + (throwH-1)] = 1;
-							throwH--;
-						};
-					v--;
-					};
-					break rowLoop;
-				}
-			}
-		}
-		return fits;
-	}
-
-
-	const html = digits.map(generateHTML).join('');
-
-	gallery.innerHTML = gallery.innerHTML + html;
-
-	const items = document.querySelectorAll('.item');
-
-	items.forEach(item => item.addEventListener('click', showPic));
-
-	overlayClose.addEventListener('click', closeImage);
-	willFit(3, 3);
+  overlayClose.addEventListener("click", closeImage);
+  willFit(3, 3);
 };
