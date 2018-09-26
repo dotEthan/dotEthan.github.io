@@ -1,11 +1,11 @@
 "use strict";
 
-//CLICKING BETWEEN THE PANELS
-
 const drawers = document.querySelectorAll(".drawer");
 const titles = document.querySelectorAll(".title__contain");
 const areas = document.querySelectorAll(".area__contain");
 const areasL = areas.length;
+
+// Open Each Panel
 
 titles.forEach(title => title.addEventListener("click", openSaysMe));
 
@@ -19,9 +19,9 @@ function openSaysMe(e) {
 
   const titleEle = document.querySelector(id.replace("-title", "-area"));
 
-  if (Modernizr.mq("(min-width: 768px)")) {
-    // Big Screens
+  // Big Screens
 
+  if (Modernizr.mq("(min-width: 768px)")) {
     areas.forEach((area, i) => {
       if (titleEle.id === area.id) {
         inde = i;
@@ -43,6 +43,7 @@ function openSaysMe(e) {
     }
   } else {
     // Small screens
+
     let same = false;
 
     drawers.forEach(drawer => {
@@ -61,7 +62,7 @@ function openSaysMe(e) {
   }
 }
 
-// Create Gallery and auto import images
+// Gallery Creation
 
 window.onload = () => {
   const gallery = document.querySelector(".gallery");
@@ -71,10 +72,11 @@ window.onload = () => {
   const overlayClose = overlay.querySelector(".close");
   const windowSize = Modernizr.mq("(min-width: 768px)") ? "big" : "small";
   let nowr = [0, 0, 0, 0, 0];
-  let oriArr = [1, 2, 3, 4, 5];
+  let oriArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   let horzArr = [...oriArr];
   let vertArr = [...oriArr];
   let squareArr = [...oriArr];
+
   let imgArr = [
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 1, 1, 0, 0, 0, 0],
@@ -93,7 +95,7 @@ window.onload = () => {
     ? [...imgArr]
     : [...imgArrSm];
 
-  // Close on Esc keydown
+  // Close overlay on Esc keydown
 
   document.onkeydown = function(evt) {
     evt = evt || window.event;
@@ -115,7 +117,8 @@ window.onload = () => {
     let folder = "square";
 
     if (h > v) folder = "horz";
-    if (h > v) folder = "vert";
+    if (h < v) folder = "vert";
+
     return `
 	        <div class="item h${h} v${v}">
 	          <img src="images/${folder}/${randomUniqueNumber(
@@ -144,6 +147,8 @@ window.onload = () => {
     return thisNum;
   }
 
+  // Randomly grab existing picture
+
   function randomUniqueNumber(limit, type) {
     if (type === "vert") {
       if (vertArr.length === 0) vertArr = [...oriArr];
@@ -164,6 +169,8 @@ window.onload = () => {
     return Math.floor(Math.random() * limit) + 1;
   }
 
+  //Show the picture
+
   function showPic(e) {
     const src = e.currentTarget.querySelector("img").src;
     overlayImage.src = src;
@@ -173,6 +180,8 @@ window.onload = () => {
   function closeImage() {
     overlay.classList.remove("open");
   }
+
+  //create an array of Horizontal and Vertical numbers to be tested
 
   const digits = Array.from({ length: 20 }, randomNumArr);
 
@@ -199,6 +208,8 @@ window.onload = () => {
     }
     return testDigits;
   }
+
+  // Test to make sure no image is going to extend out of the element.
 
   function willFit(h, v) {
     let testH = h,
@@ -245,6 +256,8 @@ window.onload = () => {
     return fits;
   }
 
+  // Create Gallery HTML and apply
+
   const html = digits.map(generateHTML).join("");
 
   gallery.innerHTML = gallery.innerHTML + html;
@@ -254,5 +267,4 @@ window.onload = () => {
   items.forEach(item => item.addEventListener("click", showPic));
 
   overlayClose.addEventListener("click", closeImage);
-  willFit(3, 3);
 };

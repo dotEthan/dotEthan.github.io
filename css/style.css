@@ -77,12 +77,12 @@
     .top__nav .top__nav__item .nav__icons {
       display: inline-block;
       padding-right: 5px;
-      transform: translate3d(-10px, 0, 0);
+      transform: translate3d(-5px, 0, 0);
       opacity: 0;
       transition: all 0.3s linear; }
       @media screen and (min-width: 768px) {
         .top__nav .top__nav__item .nav__icons {
-          padding-right: 10px; } }
+          padding-right: 5px; } }
     .top__nav .top__nav__item:hover:before {
       width: 100%;
       transition: width 0.3s ease-in-out;
@@ -101,7 +101,7 @@
       background-color: transparent; }
     .top__nav .top__nav__item:hover .nav__icons {
       opacity: 1;
-      transform: translate3d(-2px, 0, 0); }
+      transform: translate3d(0px, 0, 0); }
     .top__nav .top__nav__item.ethan {
       font-size: 1.2em;
       color: #fbfbfb;
@@ -160,6 +160,14 @@
   overflow: hidden;
   position: relative;
   display: flex; }
+  @media screen and (min-width: 400px) and (orientation: landscape) {
+    .container {
+      height: 215px;
+      width: 325px; } }
+  @media screen and (min-width: 400px) and (orientation: landscape) {
+    .container {
+      height: 315px;
+      width: 445px; } }
   @media screen and (min-width: 768px) {
     .container {
       height: 215px;
@@ -187,6 +195,13 @@
   position: absolute;
   width: 100%;
   top: 0; }
+  @media screen and (min-width: 400px) and (orientation: landscape) {
+    .gallery {
+      grid-template-columns: repeat(6, 50px); } }
+  @media screen and (min-width: 600px) and (orientation: landscape) {
+    .gallery {
+      grid-template-columns: repeat(6, 75px);
+      grid-auto-rows: 75px; } }
   @media screen and (min-width: 768px) {
     .gallery {
       grid-template-columns: repeat(10, 50px);
@@ -222,6 +237,9 @@
   background: white;
   width: 75vw;
   padding: 20px; }
+  @media screen and (max-width: 768px) and (orientation: landscape) {
+    .overlay-inner {
+      width: 50vw; } }
   @media screen and (min-width: 768px) {
     .overlay-inner {
       width: 50vw; } }
@@ -231,9 +249,7 @@
 .item {
   position: relative;
   overflow: hidden;
-  display: grid;
-  grid-template-columns: 1;
-  grid-template-rows: 1; }
+  display: grid; }
 
 .item img {
   grid-column: 1 / -1;
@@ -310,7 +326,12 @@
   background: url(../images/eth.jpg);
   background-size: contain;
   color: white;
-  border-radius: 10px; }
+  border-radius: 10px;
+  cursor: default; }
+  @media screen and (min-width: 400px) and (orientation: landscape) {
+    .name {
+      grid-column: 3/5;
+      grid-row: 2/4; } }
   @media screen and (min-width: 768px) {
     .name {
       grid-column: 5/ 7;
@@ -407,13 +428,13 @@
   #sp-area {
     right: -83vw; }
     #sp-area.open {
-      transform: translateX(-86.5vw); } }
+      transform: translateX(-86.6vw); } }
 
 @media screen and (min-width: 768px) {
   #css-area {
     right: -86.5vw; }
     #css-area.open {
-      transform: translateX(-86.6vw); } }
+      transform: translateX(-86.7vw); } }
 
 .hide {
   display: none; }
