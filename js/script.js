@@ -121,7 +121,7 @@ window.onload = () => {
 
     return `
 	        <div class="item h${h} v${v}">
-	          <img src="images/${folder}/${randomUniqueNumber(
+	          <img src="https://res.cloudinary.com/dotethan/image/upload/v1537990671/Portfolio/${folder}/${randomUniqueNumber(
       oriArr.length,
       folder
     )}.jpg">
