@@ -323,7 +323,7 @@
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  background: url(../images/eth.jpg);
+  background: url(https://res.cloudinary.com/dotethan/image/upload/v1537990221/Portfolio/eth.jpg);
   background-size: contain;
   color: white;
   border-radius: 10px;
@@ -396,7 +396,7 @@
   align-items: center;
   flex-direction: column;
   transition: all 0.5s ease-in-out;
-  background: #56756d;
+  background: #54726a;
   cursor: pointer;
   color: #eee;
   font-size: 0.7em;
