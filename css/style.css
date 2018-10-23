@@ -14,7 +14,7 @@
 .top {
   height: 8vh;
   width: 100%;
-  background: #1c2630;
+  background: red;
   position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
