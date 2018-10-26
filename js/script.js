@@ -262,7 +262,7 @@ window.onload = function() {
       h +
       " v" +
       v +
-      '">\n            <img alt="Images from Ethans life" src="https://res.cloudinary.com/dotethan/image/upload/q_auto/Portfolio/' +
+      '">\n            <img alt="Images from Ethans life" src="https://res.cloudinary.com/dotethan/image/upload/f_auto,fl_lossy,q_auto/Portfolio/' +
       folder +
       "/" +
       randomUniqueNumber(oriArr.length, folder) +
