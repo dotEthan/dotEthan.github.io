@@ -266,7 +266,7 @@ window.onload = function() {
       folder +
       "/" +
       randomUniqueNumber(oriArr.length, folder) +
-      '.jpg">\n            <div class="item__overlay">\n              <button>View \u21AA</button>\n            </div>\n          </div>\n        '
+      'z.jpg">\n            <div class="item__overlay">\n              <button>View \u21AA</button>\n            </div>\n          </div>\n        '
     );
   }
 
