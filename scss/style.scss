@@ -42,6 +42,7 @@ $header-font: "Comfortaa", cursive;
 
   @media screen and (min-width: 768px) {
     width: 80%;
+    margin-right: 10.5vw;
   }
 
   a {
@@ -367,13 +368,6 @@ $header-font: "Comfortaa", cursive;
 
   &:hover {
     background: darken($white, 10%);
-
-    // .close--lines {
-    //   &:before,
-    //   &:after {
-    //     background: darken($white, 5%);
-    //   }
-    // }
   }
 
   @media screen and (min-width: 768px) {
@@ -600,10 +594,6 @@ $header-font: "Comfortaa", cursive;
     width: 90vw;
     height: 92vh;
     transition: all 0.5s ease-in-out;
-
-    &.open {
-      transform: translateX(-80vw);
-    }
   }
 }
 
@@ -656,7 +646,8 @@ $header-font: "Comfortaa", cursive;
     right: -79.5vw;
 
     &.open {
-      transform: translateX(-86.5vw);
+      // transform: translateX(-86.5vw);
+      right: calc(96.5vw - (100vw - 100%));
     }
   }
 }
@@ -667,7 +658,7 @@ $header-font: "Comfortaa", cursive;
     right: -83vw;
 
     &.open {
-      transform: translateX(-86.6vw);
+      right: calc(93vw - (100vw - 100%));
     }
   }
 }
@@ -677,7 +668,7 @@ $header-font: "Comfortaa", cursive;
     right: -86.5vw;
 
     &.open {
-      transform: translateX(-86.7vw);
+      right: calc(89.5vw - (100vw - 100%));
     }
   }
 }
@@ -746,22 +737,17 @@ $header-font: "Comfortaa", cursive;
 }
 
 .pens__contain {
-  display: grid;
-  grid-template-columns: 1fr;
-  justify-items: center;
-  align-items: start;
+  display: flex;
+  flex-direction: column;
   width: 100%;
   position: absolute;
   top: 0;
-
-  @media screen and (min-width: 768px) {
-    align-items: center;
-  }
 }
 
 .pens__column {
   padding: 25px;
   width: 100%;
+  display: flex;
   display: grid;
   grid-template-rows: 1fr;
   justify-items: center;
@@ -1023,6 +1009,6 @@ $header-font: "Comfortaa", cursive;
 
   @media screen and (min-width: 768px) {
     width: 92vh;
-    height: 50px;
+    height: 3.5vw;
   }
 }
