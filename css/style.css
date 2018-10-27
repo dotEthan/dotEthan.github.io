@@ -330,33 +330,25 @@
   display: grid;
   justify-content: center;
   align-items: center;
-  background: rgba(243, 239, 166, 0.4);
-  transform: translate3d(0, 100%, 0);
-  transition: transform 0.3s; }
-  .item__overlay button {
-    width: 80%;
-    margin: 0 auto;
-    font-size: 0.6em; }
-    @media screen and (min-width: 768px) {
-      .item__overlay button {
-        width: auto;
-        font-size: 1em; } }
+  background: rgba(86, 117, 109, 0.4);
+  transform: translate3d(0, -100%, 0);
+  transition: transform 0.3s;
+  cursor: pointer;
+  position: relative; }
 
 .item:hover .item__overlay {
   transform: translate3d(0, 0, 0); }
 
-.item__overlay button {
-  background: #24292f;
-  border: 1px solid #eed;
-  color: white;
-  padding: 0.6em;
-  cursor: pointer;
-  text-transform: uppercase; }
-
-.item__overlay button:hover {
-  background: #eed;
-  color: #24292f;
-  border: 1px solid #24292f; }
+.item__overlay--icon {
+  width: 30px;
+  height: 30px;
+  padding-top: 30%;
+  background: url(../images/imgicon.png) no-repeat;
+  background-size: contain;
+  background-position: center;
+  transition: all 1s linear; }
+  .item__overlay--icon:hover {
+    transform: scale(1.5); }
 
 .h0,
 .v0 {

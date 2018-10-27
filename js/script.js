@@ -2,12 +2,12 @@
 
 // Production steps of ECMA-262, Edition 6, 22.1.2.1
 if (!Array.from) {
-  Array.from = (function() {
+  Array.from = (function () {
     var toStr = Object.prototype.toString;
-    var isCallable = function(fn) {
+    var isCallable = function (fn) {
       return typeof fn === "function" || toStr.call(fn) === "[object Function]";
     };
-    var toInteger = function(value) {
+    var toInteger = function (value) {
       var number = Number(value);
       if (isNaN(number)) {
         return 0;
@@ -18,7 +18,7 @@ if (!Array.from) {
       return (number > 0 ? 1 : -1) * Math.floor(Math.abs(number));
     };
     var maxSafeInteger = Math.pow(2, 53) - 1;
-    var toLength = function(value) {
+    var toLength = function (value) {
       var len = toInteger(value);
       return Math.min(Math.max(len, 0), maxSafeInteger);
     };
@@ -90,7 +90,7 @@ if (!Array.from) {
   })();
 }
 
-var _slicedToArray = (function() {
+var _slicedToArray = (function () {
   function sliceIterator(arr, i) {
     var _arr = [];
     var _n = true;
@@ -117,7 +117,7 @@ var _slicedToArray = (function() {
     }
     return _arr;
   }
-  return function(arr, i) {
+  return function (arr, i) {
     if (Array.isArray(arr)) {
       return arr;
     } else if (Symbol.iterator in Object(arr)) {
@@ -198,7 +198,7 @@ function openSaysMe(e) {
 
 // Gallery Creation
 
-window.onload = function() {
+window.onload = function () {
   var gallery = document.querySelector(".gallery");
   var container = document.querySelector(".container");
   var overlay = document.querySelector(".overlay");
@@ -231,7 +231,7 @@ window.onload = function() {
 
   // Close overlay on Esc keydown
 
-  document.onkeydown = function(evt) {
+  document.onkeydown = function (evt) {
     evt = evt || window.event;
     var isEscape = false;
     if ("key" in evt) {
@@ -257,23 +257,19 @@ window.onload = function() {
     if (h > v) folder = "horz";
     if (h < v) folder = "vert";
 
-    return (
-      '\n          <div class="item h' +
-      h +
-      " v" +
-      v +
-      '">\n            <img alt="Images from Ethans life" src="https://res.cloudinary.com/dotethan/image/upload/f_auto,fl_lossy,q_auto/Portfolio/' +
-      folder +
-      "/" +
-      randomUniqueNumber(oriArr.length, folder) +
-      'z.jpg">\n            <div class="item__overlay">\n              <button>View \u21AA</button>\n            </div>\n          </div>\n        '
-    );
+    return `
+      <div class="item h${h} v${v}">
+        <img alt="Images from Ethans life" src="https://res.cloudinary.com/dotethan/image/upload/f_auto,fl_lossy,q_auto/Portfolio/${folder}/${randomUniqueNumber(oriArr.length, folder)}z.jpg">
+        <div class="item__overlay">
+          <div class="item__overlay--icon"></div>
+        </div>
+      </div>
+    `;
   }
 
   // Ensure pictures aren't duplicated too often
   function updateArr(arrName, limit) {
     var thisNum = 0;
-    console.log(arrName);
 
     do {
       thisNum = Math.floor(Math.random() * limit) + 1;
@@ -330,10 +326,10 @@ window.onload = function() {
       testArrL = testArr.length;
 
     for (let i = 0; i < testArrL; i++) {
-      if (testArr[i].indexOf(0) < 0) {
+      if (testArr[i].indexOf(0) === -1) {
         fullRow++;
       }
-      if (fullRow === 4) {
+      if (Modernizr.mq("(min-width: 768px)") && fullRow === 4 || fullRow === 6) {
         full = true;
       }
     }
@@ -410,3 +406,6 @@ window.onload = function() {
 
   overlayClose.addEventListener("click", closeImage);
 };
+
+// Gallery Overlays Move
+

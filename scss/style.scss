@@ -7,7 +7,7 @@
 
 $darkestblue: #1c2630;
 $green: #579a57;
-$yellow: #f3efa6;
+$overlay: #56756d;
 $white: #eee;
 $black: #222;
 $lightblue: #56756d;
@@ -442,39 +442,29 @@ $header-font: "Comfortaa", cursive;
   display: grid;
   justify-content: center;
   align-items: center;
-  background: rgba($yellow, 0.4);
-  transform: translate3d(0, 100%, 0);
+  background: rgba($overlay, 0.4);
+  transform: translate3d(0, -100%, 0);
   transition: transform 0.3s;
-
-  button {
-    width: 80%;
-    margin: 0 auto;
-    font-size: 0.6em;
-
-    @media screen and (min-width: 768px) {
-      width: auto;
-      font-size: 1em;
-    }
-  }
+  cursor: pointer;
+  position: relative;
 }
 
 .item:hover .item__overlay {
   transform: translate3d(0, 0, 0);
 }
 
-.item__overlay button {
-  background: #24292f;
-  border: 1px solid #eed;
-  color: white;
-  padding: 0.6em;
-  cursor: pointer;
-  text-transform: uppercase;
-}
+.item__overlay--icon {
+  width: 30px;
+  height: 30px;
+  padding-top: 30%;
+  background: url(../images/imgicon.png) no-repeat;
+  background-size: contain;
+  background-position: center;
+  transition: all 1s linear;
 
-.item__overlay button:hover {
-  background: #eed;
-  color: #24292f;
-  border: 1px solid #24292f;
+  &:hover {
+    transform: scale(1.5);
+  }
 }
 
 .h0,
