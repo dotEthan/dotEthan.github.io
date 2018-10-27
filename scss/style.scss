@@ -454,8 +454,8 @@ $header-font: "Comfortaa", cursive;
 }
 
 .item__overlay--icon {
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
   padding-top: 30%;
   background: url(../images/imgicon.png) no-repeat;
   background-size: contain;
@@ -464,6 +464,16 @@ $header-font: "Comfortaa", cursive;
 
   &:hover {
     transform: scale(1.5);
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 30px;
+    height: 30px;
+  }
+
+  @media screen and (min-width: 992px) {
+    width: 40px;
+    height: 40px;
   }
 }
 
@@ -541,6 +551,11 @@ $header-font: "Comfortaa", cursive;
 .foot {
   font-size: 0.7em;
   text-align: center;
+
+  a {
+    color: $white;
+    text-decoration: none;
+  }
 
   @media screen and (min-width: 768px) {
     font-size: 1em;
@@ -862,7 +877,8 @@ $header-font: "Comfortaa", cursive;
   justify-items: center;
   width: 100%;
   padding: 50px 0;
-  @media screen and (min-width: 768px) {
+
+  @media screen and (min-width: 1020px) {
     grid-template-columns: 1fr 1fr;
     padding: 50px;
   }
