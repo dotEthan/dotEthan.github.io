@@ -247,24 +247,17 @@ window.onload = function () {
 
   // Create HTML for each Picture
 
-  function generateHTML(_ref) {
+   function generateHTML(_ref) {
     var _ref2 = _slicedToArray(_ref, 2),
-      h = _ref2[0],
-      v = _ref2[1];
+        h = _ref2[0],
+        v = _ref2[1];
 
     var folder = "square";
 
     if (h > v) folder = "horz";
     if (h < v) folder = "vert";
 
-    return `
-      <div class="item h${h} v${v}">
-        <img alt="Images from Ethans life" src="https://res.cloudinary.com/dotethan/image/upload/f_auto,fl_lossy,q_auto/Portfolio/${folder}/${randomUniqueNumber(oriArr.length, folder)}z.jpg">
-        <div class="item__overlay">
-          <div class="item__overlay--icon"></div>
-        </div>
-      </div>
-    `;
+    return "\n      <div class=\"item h" + h + " v" + v + "\">\n        <img alt=\"Images from Ethans life\" src=\"https://res.cloudinary.com/dotethan/image/upload/f_auto,fl_lossy,q_auto/Portfolio/" + folder + "/" + randomUniqueNumber(oriArr.length, folder) + "z.jpg\">\n        <div class=\"item__overlay\">\n          <div class=\"item__overlay--icon\"></div>\n        </div>\n      </div>\n    ";
   }
 
   // Ensure pictures aren't duplicated too often
