@@ -756,24 +756,29 @@ $header-font: "Comfortaa", cursive;
   display: flex;
   flex-direction: column;
   width: 100%;
-  position: absolute;
+  position: relative;
   top: 0;
 }
 
-.pens__column {
+.pens__column { 
   padding: 25px;
   width: 100%;
   display: flex;
-  display: grid;
-  grid-template-rows: 1fr;
+	@supports (display: grid) {
+		display: grid;
+		grid-gap: 35px;
+    grid-template-rows: 1fr;
+	}
   justify-items: center;
   align-items: start;
   position: relative;
 
   @media screen and (min-width: 768px) {
-    grid-template-columns: 1fr 1.5fr;
-    grid-template-rows: auto;
-    place-items: center;
+    @supports (display: grid) {
+      grid-template-columns: 1fr 1.5fr;
+      grid-template-rows: auto;
+      place-items: center;
+    }
   }
 
   @media screen and (min-width: 1200px) {
