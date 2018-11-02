@@ -1,5 +1,3 @@
-README for Javascript & Codepen Display Page
-
 # Portfolio Site
 [http://dotethan.github.com](http://dotethan.github.com)
 
