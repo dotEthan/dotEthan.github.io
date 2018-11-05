@@ -394,8 +394,8 @@ $header-font: "Comfortaa", cursive;
 
 .close--lines {
   position: relative;
-  width: 90%;
-  height: 90%;
+  width: 100%;
+  height: 100%;
   margin: 0 auto;
 
   &:before,
@@ -404,7 +404,7 @@ $header-font: "Comfortaa", cursive;
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 100%;
+    width: 50%;
     height: 2px;
     background: $black;
 
@@ -974,14 +974,14 @@ $header-font: "Comfortaa", cursive;
     h1 {
       font-size: 1.1em;
       margin: 0;
-    }
 
-    @media screen and (min-width: 768px) {
-      font-size: 1.5em;
-    }
-
-    @media screen and (min-width: 1200px) {
-      font-size: 1.8em;
+      @media screen and (min-width: 768px) {
+        font-size: 1.5em;
+      }
+  
+      @media screen and (min-width: 1200px) {
+        font-size: 1.8em;
+      }
     }
   }
 
@@ -991,21 +991,21 @@ $header-font: "Comfortaa", cursive;
 
     h2 {
       font-size: .8em;
-      color: #858585;
+      color: #727272;
       margin: 0;
 
       a{
         text-decoration: none;
-        color: #858585;
+        color: #727272;
       }
-    }
 
-    @media screen and (min-width: 768px) {
-      font-size: 0.9em;
-    }
-
-    @media screen and (min-width: 1200px) {
-      font-size: 1em;
+      @media screen and (min-width: 768px) {
+        font-size: 0.9em;
+      }
+  
+      @media screen and (min-width: 1200px) {
+        font-size: 1em;
+      }
     }
   }
 
