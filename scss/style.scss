@@ -766,7 +766,7 @@ $header-font: "Comfortaa", cursive;
   display: flex;
 	@supports (display: grid) {
 		display: grid;
-		grid-gap: 35px;
+		grid-gap: 15px;
     grid-template-rows: 1fr;
 	}
   justify-items: center;
@@ -783,6 +783,8 @@ $header-font: "Comfortaa", cursive;
 
   @media screen and (min-width: 1200px) {
     padding: 50px;
+    width: 80%;
+    margin: 0 auto;
   }
 
   &:before {
@@ -955,10 +957,6 @@ $header-font: "Comfortaa", cursive;
 .pen__texts {
   width: 95%;
   color: #223;
-
-  @media screen and (min-width: 768px) {
-    width: 90%;
-  }
 }
 
 .pen__text {
@@ -970,11 +968,13 @@ $header-font: "Comfortaa", cursive;
   }
 
   &.pen__title {
-    font-weight: bold;
-    text-align: center;
     font-family: $header-font;
-    font-size: 1.3em;
     margin-bottom: 0;
+
+    h1 {
+      font-size: 1.1em;
+      margin: 0;
+    }
 
     @media screen and (min-width: 768px) {
       font-size: 1.5em;
@@ -986,10 +986,19 @@ $header-font: "Comfortaa", cursive;
   }
 
   &.pen__title--sub {
-    font-size: 0.8em;
+    font-family: $header-font;
     margin-top: 0;
-    text-align: center;
-    font-style: italic;
+
+    h2 {
+      font-size: .8em;
+      color: #858585;
+      margin: 0;
+
+      a{
+        text-decoration: none;
+        color: #858585;
+      }
+    }
 
     @media screen and (min-width: 768px) {
       font-size: 0.9em;
@@ -1008,7 +1017,7 @@ $header-font: "Comfortaa", cursive;
     }
 
     @media screen and (min-width: 1200px) {
-      font-size: 1em;
+      font-size: .9em;
     }
   }
 
