@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans");
 @import url("https://fonts.googleapis.com/css?family=Comfortaa");
-
+ 
 * {
   box-sizing: border-box;
 }
@@ -527,7 +527,7 @@ $header-font: "Comfortaa", cursive;
   grid-row: span 4;
 }
 
-.name { 
+.name {  
   grid-column: 2/ 4;
   grid-row: 3/5;
   background: $black;

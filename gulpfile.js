@@ -8,8 +8,8 @@ const postcssPresetEnv = require('postcss-preset-env');
 
 gulp.task('styles', function () {
   const processors = [
-    // csswring,
-    // autoprefixer,
+    csswring,
+    autoprefixer,
     postcssPresetEnv({ stage: 0 })
   ];
 
@@ -26,7 +26,7 @@ gulp.task("serve", ["styles"], function () {
     server: "./"
   });
 
-  gulp.watch(["scss/*.scss"], ["styles"]);
+  gulp.watch(["scss/*.scss"], ["styles"], browserSync.reload);
   gulp.watch("*.html").on("change", browserSync.reload);
   gulp.watch("js/*.js").on("change", browserSync.reload);
 });
