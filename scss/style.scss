@@ -264,6 +264,10 @@ $header-font: "Comfortaa", cursive;
   @media screen and (min-width: 1600px) {
     margin-bottom: 25vh;
   }
+
+  @media screen and (min-width: 992px) and (min-aspect-ratio: 16/8) {
+    margin-bottom: 0;
+  }
 }
 
 .gallery {
