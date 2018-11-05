@@ -470,7 +470,7 @@
 .name {
   grid-column: 2/ 4;
   grid-row: 3/5;
-  background: white;
+  background: #222;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

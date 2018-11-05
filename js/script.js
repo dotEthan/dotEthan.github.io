@@ -1,223 +1,97 @@
 "use strict";
 
-// Production steps of ECMA-262, Edition 6, 22.1.2.1
-if (!Array.from) {
-  Array.from = (function () {
-    var toStr = Object.prototype.toString;
-    var isCallable = function (fn) {
-      return typeof fn === "function" || toStr.call(fn) === "[object Function]";
-    };
-    var toInteger = function (value) {
-      var number = Number(value);
-      if (isNaN(number)) {
-        return 0;
-      }
-      if (number === 0 || !isFinite(number)) {
-        return number;
-      }
-      return (number > 0 ? 1 : -1) * Math.floor(Math.abs(number));
-    };
-    var maxSafeInteger = Math.pow(2, 53) - 1;
-    var toLength = function (value) {
-      var len = toInteger(value);
-      return Math.min(Math.max(len, 0), maxSafeInteger);
-    };
-
-    // The length property of the from method is 1.
-    return function from(arrayLike /*, mapFn, thisArg */) {
-      // 1. Let C be the this value.
-      var C = this;
-
-      // 2. Let items be ToObject(arrayLike).
-      var items = Object(arrayLike);
-
-      // 3. ReturnIfAbrupt(items).
-      if (arrayLike == null) {
-        throw new TypeError(
-          "Array.from requires an array-like object - not null or undefined"
-        );
-      }
-
-      // 4. If mapfn is undefined, then let mapping be false.
-      var mapFn = arguments.length > 1 ? arguments[1] : void undefined;
-      var T;
-      if (typeof mapFn !== "undefined") {
-        // 5. else
-        // 5. a If IsCallable(mapfn) is false, throw a TypeError exception.
-        if (!isCallable(mapFn)) {
-          throw new TypeError(
-            "Array.from: when provided, the second argument must be a function"
-          );
-        }
-
-        // 5. b. If thisArg was supplied, let T be thisArg; else let T be undefined.
-        if (arguments.length > 2) {
-          T = arguments[2];
-        }
-      }
-
-      // 10. Let lenValue be Get(items, "length").
-      // 11. Let len be ToLength(lenValue).
-      var len = toLength(items.length);
-
-      // 13. If IsConstructor(C) is true, then
-      // 13. a. Let A be the result of calling the [[Construct]] internal method
-      // of C with an argument list containing the single item len.
-      // 14. a. Else, Let A be ArrayCreate(len).
-      var A = isCallable(C) ? Object(new C(len)) : new Array(len);
-
-      // 16. Let k be 0.
-      var k = 0;
-      // 17. Repeat, while k < len… (also steps a - h)
-      var kValue;
-      while (k < len) {
-        kValue = items[k];
-        if (mapFn) {
-          A[k] =
-            typeof T === "undefined"
-              ? mapFn(kValue, k)
-              : mapFn.call(T, kValue, k);
-        } else {
-          A[k] = kValue;
-        }
-        k += 1;
-      }
-      // 18. Let putStatus be Put(A, "length", len, true).
-      A.length = len;
-      // 20. Return A.
-      return A;
-    };
-  })();
-}
-
-var _slicedToArray = (function () {
-  function sliceIterator(arr, i) {
-    var _arr = [];
-    var _n = true;
-    var _d = false;
-    var _e = undefined;
-    try {
-      for (
-        var _i = arr[Symbol.iterator](), _s;
-        !(_n = (_s = _i.next()).done);
-        _n = true
-      ) {
-        _arr.push(_s.value);
-        if (i && _arr.length === i) break;
-      }
-    } catch (err) {
-      _d = true;
-      _e = err;
-    } finally {
-      try {
-        if (!_n && _i["return"]) _i["return"]();
-      } finally {
-        if (_d) throw _e;
-      }
-    }
-    return _arr;
-  }
-  return function (arr, i) {
-    if (Array.isArray(arr)) {
-      return arr;
-    } else if (Symbol.iterator in Object(arr)) {
-      return sliceIterator(arr, i);
-    } else {
-      throw new TypeError(
-        "Invalid attempt to destructure non-iterable instance"
-      );
-    }
-  };
-})();
-
-var drawers = document.querySelectorAll(".drawer");
-var titles = document.querySelectorAll(".title__contain");
-var areas = document.querySelectorAll(".area__contain");
-var areasL = areas.length;
-var titlesL = titles.length;
-var drawersL = drawers.length;
+const drawers = document.querySelectorAll(".drawer");
+const titles = document.querySelectorAll(".title__contain");
+const areas = document.querySelectorAll(".area__contain");
+const areasL = areas.length;
+let lastOpenId;
 
 // Open Each Panel
 
-for (var i = 0; i < titlesL; i++) {
-  titles[i].addEventListener("click", openSaysMe);
-}
+titles.forEach(title => title.addEventListener("click", openSaysMe));
 
 function openSaysMe(e) {
-  var id = "#" + e.target.id;
-  var titleId = "#" + e.target.id;
-  var ele = document.querySelector(
+  const id = "#" + e.target.id;
+  const ele = document.querySelector(
     id.replace("-area", "").replace("-title", "")
   );
-  var inde = void 0;
-
-  var titleEle = document.querySelector(id.replace("-title", "-area"));
+  const titleEle = document.querySelector(id.replace("-title", "-area"));
 
   // Big Screens
-
   if (Modernizr.mq("(min-width: 768px)")) {
-    for (var i = 0; i < areasL; i++) {
-      if (titleEle.id === areas[i].id) {
-        inde = i;
-      }
-    }
-
-    if (areas[inde].classList.contains("open")) {
-      for (var i = areasL - 1; i >= inde; i--) {
-        areas[i].classList.remove("open");
-      }
+    let clickedId = findId(titleEle);
+    if (lastOpenId === clickedId) {
+      areas[clickedId].classList.remove('open');
+      lastOpenId--;
     } else {
-      for (var _i = 0; _i < areasL; _i++) {
-        if (_i <= inde) {
-          areas[_i].classList.add("open");
-        } else {
-          areas[_i].classList.remove("open");
-        }
-      }
+      open(clickedId);
     }
   } else {
     // Small screens
 
-    var same = false;
+    let same = false;
 
-    for (var i = 0; i < drawersL; i++) {
+    drawers.forEach(drawer => {
       if (e.target.id && ele.classList.contains("open")) {
         ele.classList.remove("open");
         same = true;
         return;
       }
 
-      if (e.target.id && drawers[i].classList.contains("open")) {
-        drawers[i].classList.remove("open");
+      if (e.target.id && drawer.classList.contains("open")) {
+        drawer.classList.remove("open");
       }
-    }
+    });
 
     !same ? ele.classList.add("open") : (same = false);
   }
 }
 
+function findId(ele) {
+  for (let i = 0; i < areasL; i++) {
+    if (ele.id === areas[i].id) return i;
+  }
+}
+
+function open(eleId) {
+  for (let i = 0; i < areasL; i++) {
+    if (i <= eleId) {
+      areas[i].classList.add("open");
+      lastOpenId = i;
+    } else {
+      areas[i].classList.remove("open");
+    }
+  }
+}
+
+document.querySelector('.bg').addEventListener("click", closeTabs);
+
+function closeTabs() {
+  open(-1);
+}
+
 // Gallery Creation
 
-window.onload = function () {
-  var gallery = document.querySelector(".gallery");
-  var container = document.querySelector(".container");
-  var overlay = document.querySelector(".overlay");
-  var overlayImage = overlay.querySelector("img");
-  var overlayClose = overlay.querySelector(".close");
-  var windowSize = Modernizr.mq("(min-width: 768px)") ? "big" : "small";
-  var nowr = [0, 0, 0, 0, 0];
-  var oriArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-  var horzArr = [].concat(oriArr);
-  var vertArr = [].concat(oriArr);
-  var squareArr = [].concat(oriArr);
+window.onload = () => {
+  const gallery = document.querySelector(".gallery");
+  const container = document.querySelector(".container");
+  const overlay = document.querySelector(".overlay");
+  const overlayImage = overlay.querySelector("img");
+  const overlayClose = overlay.querySelector(".close");
+  const windowSize = Modernizr.mq("(min-width: 768px)") ? "big" : "small";
+  let nowr = [0, 0, 0, 0, 0];
+  let oriArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  let horzArr = [...oriArr];
+  let vertArr = [...oriArr];
+  let squareArr = [...oriArr];
 
-  var imgArr = [
+  let imgArr = [
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 1, 1, 0, 0, 0, 0],
     [0, 0, 0, 0, 1, 1, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
   ];
-  var imgArrSm = [
+  let imgArrSm = [
     [0, 0, 0, 0],
     [0, 0, 0, 0],
     [0, 1, 1, 0],
@@ -225,9 +99,9 @@ window.onload = function () {
     [0, 0, 0, 0],
     [0, 0, 0, 0]
   ];
-  var testArr = Modernizr.mq("(min-width: 768px)")
-    ? [].concat(imgArr)
-    : [].concat(imgArrSm);
+  let testArr = Modernizr.mq("(min-width: 768px)")
+    ? [...imgArr]
+    : [...imgArrSm];
 
   // Close overlay on Esc keydown
 
@@ -242,33 +116,38 @@ window.onload = function () {
 
     if (isEscape) {
       overlay.classList.remove("open");
+      open(-1);
     }
   };
 
   // Create HTML for each Picture
 
-   function generateHTML(_ref) {
-    var _ref2 = _slicedToArray(_ref, 2),
-        h = _ref2[0],
-        v = _ref2[1];
-
-    var folder = "square";
+  function generateHTML([h, v]) {
+    let folder = "square";
 
     if (h > v) folder = "horz";
     if (h < v) folder = "vert";
 
-    return "\n      <div class=\"item h" + h + " v" + v + "\">\n        <img alt=\"Images from Ethans life\" src=\"https://res.cloudinary.com/dotethan/image/upload/f_auto,fl_lossy,q_auto/Portfolio/" + folder + "/" + randomUniqueNumber(oriArr.length, folder) + "z.jpg\">\n        <div class=\"item__overlay\">\n          <div class=\"item__overlay--icon\"></div>\n        </div>\n      </div>\n    ";
+    return `
+	        <div class="item h${h} v${v}">
+	          <img alt="Images from Ethans life" src="https://res.cloudinary.com/dotethan/image/upload/f_auto,fl_lossy,q_auto/Portfolio/${folder}/${randomUniqueNumber(oriArr.length, folder)}z.jpg">
+	          <div class="item__overlay">
+              <div class=\"item__overlay--icon\"></div>
+	          </div>
+	        </div>
+	      `;
   }
 
   // Ensure pictures aren't duplicated too often
+
   function updateArr(arrName, limit) {
-    var thisNum = 0;
+    let thisNum = 0;
 
     do {
       thisNum = Math.floor(Math.random() * limit) + 1;
-    } while (arrName.indexOf(thisNum) < 0);
+    } while (!arrName.includes(thisNum));
 
-    var numInd = arrName.indexOf(thisNum);
+    const numInd = arrName.indexOf(thisNum);
     arrName.splice(numInd, 1);
 
     return thisNum;
@@ -278,15 +157,15 @@ window.onload = function () {
 
   function randomUniqueNumber(limit, type) {
     if (type === "vert") {
-      if (vertArr.length === 0) vertArr = [].concat(oriArr);
+      if (vertArr.length === 0) vertArr = [...oriArr];
 
       return updateArr(vertArr, limit);
     } else if (type === "horz") {
-      if (horzArr.length === 0) horzArr = [].concat(oriArr);
+      if (horzArr.length === 0) horzArr = [...oriArr];
 
       return updateArr(horzArr, limit);
     } else if (type === "square") {
-      if (squareArr.length === 0) squareArr = [].concat(oriArr);
+      if (squareArr.length === 0) squareArr = [...oriArr];
 
       return updateArr(squareArr, limit);
     }
@@ -299,7 +178,7 @@ window.onload = function () {
   //Show the picture
 
   function showPic(e) {
-    var src = e.currentTarget.querySelector("img").src;
+    const src = e.currentTarget.querySelector("img").src;
     overlayImage.src = src;
     overlay.classList.add("open");
   }
@@ -310,22 +189,21 @@ window.onload = function () {
 
   //create an array of Horizontal and Vertical numbers to be tested
 
-  var digits = Array.from({ length: 20 }, randomNumArr);
+  const digits = Array.from({ length: 20 }, randomNumArr);
 
   function randomNumArr() {
     let testDigits = [randomNumber(3), randomNumber(3)],
       fullRow = 0,
-      full = false,
-      testArrL = testArr.length;
+      full = false;
 
-    for (let i = 0; i < testArrL; i++) {
-      if (testArr[i].indexOf(0) === -1) {
+    testArr.forEach(row => {
+      if (!row.includes(0)) {
         fullRow++;
       }
-      if (Modernizr.mq("(min-width: 768px)") && fullRow === 4 || fullRow === 6) {
+      if (fullRow === 4) {
         full = true;
       }
-    }
+    });
 
     if (willFit(testDigits[0], testDigits[1]) && !full) {
       return testDigits;
@@ -340,17 +218,17 @@ window.onload = function () {
   // Test to make sure no image is going to extend out of the element.
 
   function willFit(h, v) {
-    var testH = h,
+    let testH = h,
       testV = v,
       fits = false;
 
-    rowLoop: for (var i = 0; i <= testArr.length - 1; i++) {
-      columnLoop: for (var j = 0; j <= testArr[i].length - 1; j++) {
+    rowLoop: for (let i = 0; i <= testArr.length - 1; i++) {
+      columnLoop: for (let j = 0; j <= testArr[i].length - 1; j++) {
         if (testArr[i][j] === 0) {
-          var throwV = testV;
+          let throwV = testV;
 
           while (throwV >= 1) {
-            var throwH = testH;
+            let throwH = testH;
 
             while (throwH >= 1) {
               if (
@@ -369,11 +247,11 @@ window.onload = function () {
           fits = true;
 
           while (v >= 1) {
-            var _throwH = h;
-            while (_throwH >= 1) {
+            let throwH = h;
+            while (throwH >= 1) {
               if (testArr[i + (v - 1)] === undefined) continue columnLoop;
-              testArr[i + (v - 1)][j + (_throwH - 1)] = 1;
-              _throwH--;
+              testArr[i + (v - 1)][j + (throwH - 1)] = 1;
+              throwH--;
             }
             v--;
           }
@@ -386,19 +264,13 @@ window.onload = function () {
 
   // Create Gallery HTML and apply
 
-  var html = digits.map(generateHTML).join("");
+  const html = digits.map(generateHTML).join("");
 
   gallery.innerHTML = gallery.innerHTML + html;
 
-  var items = document.querySelectorAll(".item");
-  var itemsL = items.length;
+  const items = document.querySelectorAll(".item");
 
-  for (let i = 0; i < itemsL; i++) {
-    items[i].addEventListener("click", showPic);
-  }
+  items.forEach(item => item.addEventListener("click", showPic));
 
   overlayClose.addEventListener("click", closeImage);
 };
-
-// Gallery Overlays Move
-

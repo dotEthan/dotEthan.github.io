@@ -527,10 +527,10 @@ $header-font: "Comfortaa", cursive;
   grid-row: span 4;
 }
 
-.name {
+.name { 
   grid-column: 2/ 4;
   grid-row: 3/5;
-  background: white;
+  background: $black;
   display: flex;
   justify-content: center;
   align-items: flex-end;

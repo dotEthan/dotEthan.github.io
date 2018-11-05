@@ -9,7 +9,7 @@ const postcssPresetEnv = require('postcss-preset-env');
 gulp.task('styles', function () {
   const processors = [
     // csswring,
-    autoprefixer,
+    // autoprefixer,
     postcssPresetEnv({ stage: 0 })
   ];
 
