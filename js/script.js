@@ -2,9 +2,10 @@
 
 const drawers = document.querySelectorAll(".drawer");
 const titles = document.querySelectorAll(".title__contain");
+const bgOverlay = document.querySelector('.bg__overlay');
 const areas = document.querySelectorAll(".area__contain");
-const areasL = areas.length;
-let lastOpenId;
+const areasL = areas.length - 1;
+let lastOpenId = -1;
 
 // Open Each Panel
 
@@ -19,13 +20,9 @@ function openSaysMe(e) {
 
   // Big Screens
   if (Modernizr.mq("(min-width: 768px)")) {
-    let clickedId = findId(titleEle);
-    if (lastOpenId === clickedId) {
-      areas[clickedId].classList.remove('open');
-      lastOpenId--;
-    } else {
-      open(clickedId);
-    }
+
+    panelClickHandler(titleEle);
+
   } else {
     // Small screens
 
@@ -47,27 +44,61 @@ function openSaysMe(e) {
   }
 }
 
+function panelClickHandler(titleEle) {
+  let clickedId = findId(titleEle);
+
+  console.log(clickedId, lastOpenId);
+  if (clickedId === lastOpenId) {
+    titleEle.classList.remove('open');
+    lastOpenId--;
+  } else if (clickedId === null || lastOpenId >= clickedId) {
+    decSlideHandler(clickedId);
+  } else {
+    incSlideHandler(clickedId);
+  }
+
+  if (lastOpenId > -1) {
+    if (!bgOverlay.classList.contains('open')) bgOverlay.classList.add('open');
+  } else {
+    if (bgOverlay.classList.contains('open')) bgOverlay.classList.remove('open');
+  }
+}
+
 function findId(ele) {
-  for (let i = 0; i < areasL; i++) {
+  if (ele === -1) return null;
+  for (let i = 0; i <= areasL; i++) {
     if (ele.id === areas[i].id) return i;
   }
 }
 
-function open(eleId) {
-  for (let i = 0; i < areasL; i++) {
-    if (i <= eleId) {
-      areas[i].classList.add("open");
-      lastOpenId = i;
-    } else {
-      areas[i].classList.remove("open");
+function decSlideHandler(eleId) {
+  for (let i = areasL; i >= 0; i--) {
+    if (eleId === lastOpenId) {
+
+    } else if (i >= eleId) {
+      if (areas[i].classList.contains('open')) {
+        areas[i].classList.remove('open');
+        lastOpenId--;
+      }
     }
   }
 }
 
-document.querySelector('.bg').addEventListener("click", closeTabs);
+function incSlideHandler(eleId) {
+  for (let i = 0; i <= areasL; i++) {
+    if (i <= eleId) {
+      if (!areas[i].classList.contains('open')) {
+        areas[i].classList.add('open');
+        lastOpenId++;
+      }
+    }
+  }
+}
+
+document.querySelector('.bg__overlay').addEventListener("click", closeTabs);
 
 function closeTabs() {
-  open(-1);
+  panelClickHandler(-1);
 }
 
 // Gallery Creation
@@ -116,7 +147,7 @@ window.onload = () => {
 
     if (isEscape) {
       overlay.classList.remove("open");
-      open(-1);
+      panelClickHandler(-1);
     }
   };
 

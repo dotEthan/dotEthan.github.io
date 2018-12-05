@@ -219,6 +219,21 @@ $header-font: "Comfortaa", cursive;
   }
 }
 
+.bg__overlay {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  background-color: rgba(0,0,0,.4);
+
+  &.open {
+    display: block;
+  }
+}
+
 // Start Grid
 
 .close {
@@ -593,6 +608,7 @@ $header-font: "Comfortaa", cursive;
   height: auto;
   display: flex;
   flex-direction: column;
+  z-index: 5;
 
   @media screen and (min-width: 768px) {
     flex-direction: row-reverse;
