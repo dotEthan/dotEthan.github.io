@@ -856,8 +856,8 @@ $header-font: "Comfortaa", cursive;
 
 .cp__titles {
   text-align: center;
-  color: $black;
-  background: rgba($white, 0.5);
+  color: $white;
+  background: rgba($black, 0.5);
   width: 80%;
   padding: 15px;
   border-radius: 10px;
@@ -869,6 +869,7 @@ $header-font: "Comfortaa", cursive;
   @media screen and (min-width: 768px) {
     font-size: 1rem;
     width: 40%;
+    padding: 25px;
   }
 }
 
@@ -888,8 +889,9 @@ $header-font: "Comfortaa", cursive;
   font-size: 0.8em;
   font-family: $regular-font;
 
+
   a {
-    color: $black;
+    color: $white;
   }
 }
 
