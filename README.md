@@ -17,7 +17,7 @@ The site looks and acts as I hoped.
 
 I forgot to check [caniuse.com](https://caniuse.com/) for CSS Grid and originally used it along with Flexbox in the layout. 
 
-The auto importing of images was built specifically with Grid in mind so I removed it on some older browsers.
+The auto importing of images for the main page gallery was built specifically with Grid in mind so I removed it on some older browsers.
 
 ## What Lessons Were Learned
 
