@@ -722,7 +722,7 @@ $header-font: "Comfortaa", cursive;
   position: absolute;
   top: 0vh;
   left: 29px;
-  width: 90vw;
+  width: 85vw;
   height: 92vh;
   background: $white;
   transform: translateX(-100%);
@@ -832,8 +832,9 @@ $header-font: "Comfortaa", cursive;
 
 .site__screen {
   img {
-    max-width: 100%;
+    max-width: 400px;
     max-height: 450px;
+    width: 100%;
 
     @media screen and (orientation: landscape) {
       max-height: 200px;
@@ -841,6 +842,7 @@ $header-font: "Comfortaa", cursive;
 
     @media screen and (min-width: 768px) {
       max-height: 450px;
+      max-width: 100%;
     }
   }
 }

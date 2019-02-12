@@ -1,55 +1,55 @@
 "use strict";
 
-const drawers = document.querySelectorAll(".drawer");
 const titles = document.querySelectorAll(".title__contain");
 const bgOverlay = document.querySelector('.bg__overlay');
 const areas = document.querySelectorAll(".area__contain");
 const areasL = areas.length - 1;
 let lastOpenId = -1;
 
-// Open Each Panel
-
+// Add click listener to panel titles
 titles.forEach(title => title.addEventListener("click", openSaysMe));
 
+// Add click listner to darked background overlay
+bgOverlay.addEventListener("click", closeTabs);
+
+// Mobile functionality?
+function closeTabs() {
+  if (Modernizr.mq("(min-width: 768px)")) {
+    desktopPanelClickHandler(-1);
+  } else {
+    mobilePanelClickHandler(-1);
+  }
+}
+
 function openSaysMe(e) {
-  const id = "#" + e.target.id;
-  const ele = document.querySelector(
-    id.replace("-area", "").replace("-title", "")
-  );
-  const titleEle = document.querySelector(id.replace("-title", "-area"));
+  // Clicked Element's name
+  const clickedId = "#" + e.currentTarget.id;
+
+  // Mobile - Finding element id to open
+  const mobileEle = document.querySelector(clickedId.replace("-area", "").replace("-title", ""));
+
+  // Desktop - Finding element id to open
+  const desktopEle = document.querySelector(clickedId.replace("-title", "-area"));
 
   // Big Screens
   if (Modernizr.mq("(min-width: 768px)")) {
 
-    panelClickHandler(titleEle);
+    desktopPanelClickHandler(desktopEle);
 
   } else {
+
     // Small screens
-
-    let same = false;
-
-    drawers.forEach(drawer => {
-      if (e.target.id && ele.classList.contains("open")) {
-        ele.classList.remove("open");
-        same = true;
-        return;
-      }
-
-      if (e.target.id && drawer.classList.contains("open")) {
-        drawer.classList.remove("open");
-      }
-    });
-
-    !same ? ele.classList.add("open") : (same = false);
+    mobilePanelClickHandler(mobileEle);
   }
 }
 
-function panelClickHandler(titleEle) {
-  let clickedId = findId(titleEle);
+function desktopPanelClickHandler(ele) {
 
-  console.log(clickedId, lastOpenId);
+  let clickedId = findId(ele);
+
+  // If ele is last open, close and dec lastopenID, otherwise inc or dec accordingly
   if (clickedId === lastOpenId) {
-    titleEle.classList.remove('open');
+    ele.classList.remove('open');
     lastOpenId--;
   } else if (clickedId === null || lastOpenId >= clickedId) {
     decSlideHandler(clickedId);
@@ -57,6 +57,36 @@ function panelClickHandler(titleEle) {
     incSlideHandler(clickedId);
   }
 
+  bgToggle();
+}
+
+function mobilePanelClickHandler(ele) {
+  const drawers = document.querySelectorAll(".drawer");
+
+  drawers.forEach(drawer => {
+    if (drawer.id === ele.id && ele.classList.contains("open")) {
+
+      ele.classList.remove("open");
+      lastOpenId--;
+      return;
+    }
+
+    if (drawer.id === ele.id && !drawer.classList.contains("open")) {
+      drawer.classList.add("open");
+      lastOpenId++;
+    }
+
+    if (drawer.id !== ele.id && drawer.classList.contains("open")) {
+      drawer.classList.remove("open");
+      lastOpenId--;
+    }
+  });
+
+  bgToggle();
+}
+
+// Toggle darkened background overlay
+function bgToggle() {
   if (lastOpenId > -1) {
     if (!bgOverlay.classList.contains('open')) bgOverlay.classList.add('open');
   } else {
@@ -64,6 +94,7 @@ function panelClickHandler(titleEle) {
   }
 }
 
+// Finding Clicked Element's place in areas Array
 function findId(ele) {
   if (ele === -1) return null;
   for (let i = 0; i <= areasL; i++) {
@@ -87,18 +118,12 @@ function decSlideHandler(eleId) {
 function incSlideHandler(eleId) {
   for (let i = 0; i <= areasL; i++) {
     if (i <= eleId) {
-      if (!areas[i].classList.contains('open')) {
+      if (!areas[i].classList.contains('open')) { // needed? Fail quietly or loudly?
         areas[i].classList.add('open');
         lastOpenId++;
       }
     }
   }
-}
-
-document.querySelector('.bg__overlay').addEventListener("click", closeTabs);
-
-function closeTabs() {
-  panelClickHandler(-1);
 }
 
 // Gallery Creation
@@ -134,7 +159,16 @@ window.onload = () => {
     ? [...imgArr]
     : [...imgArrSm];
 
-  // Close overlay on Esc keydown
+  // Image overlay click event to close
+  overlay.addEventListener("click", closeImgOver);
+
+  function closeImgOver(e) {
+    if (e.target.classList.contains('overlay')) {
+      overlay.classList.remove("open");
+    }
+  }
+
+  // Close overlays (and sliding panels) on Esc keydown
 
   document.onkeydown = function (evt) {
     evt = evt || window.event;
@@ -147,7 +181,7 @@ window.onload = () => {
 
     if (isEscape) {
       overlay.classList.remove("open");
-      panelClickHandler(-1);
+      closeTabs();
     }
   };
 
@@ -209,6 +243,9 @@ window.onload = () => {
   //Show the picture
 
   function showPic(e) {
+    if (e.currentTarget.id === 'static-img') {
+      return;
+    }
     const src = e.currentTarget.querySelector("img").src;
     overlayImage.src = src;
     overlay.classList.add("open");
