@@ -227,7 +227,7 @@ $header-font: "Comfortaa", cursive;
   bottom: 0;
   left: 0;
   z-index: 2;
-  background-color: rgba(0,0,0,.4);
+  background-color: rgba(0,0,0,.5);
 
   &.open {
     display: block;
@@ -324,13 +324,13 @@ $header-font: "Comfortaa", cursive;
 
 .overlay {
   position: fixed;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.5);
   top: 0;
   right: 0;
   bottom: 0;
   left: 30px;
   display: none;
-  z-index: 2;
+  z-index: 99;
 
   @media screen and (min-width: 768px) {
     left: 0;

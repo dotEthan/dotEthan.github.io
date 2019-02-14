@@ -5,6 +5,7 @@ const bgOverlay = document.querySelector('.bg__overlay');
 const areas = document.querySelectorAll(".area__contain");
 const areasL = areas.length - 1;
 let lastOpenId = -1;
+let windowSize;
 
 // Add click listener to panel titles
 titles.forEach(title => title.addEventListener("click", openSaysMe));
@@ -130,16 +131,15 @@ function incSlideHandler(eleId) {
 
 window.onload = () => {
   const gallery = document.querySelector(".gallery");
-  const container = document.querySelector(".container");
   const overlay = document.querySelector(".overlay");
   const overlayImage = overlay.querySelector("img");
   const overlayClose = overlay.querySelector(".close");
-  const windowSize = Modernizr.mq("(min-width: 768px)") ? "big" : "small";
-  let nowr = [0, 0, 0, 0, 0];
   let oriArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   let horzArr = [...oriArr];
   let vertArr = [...oriArr];
   let squareArr = [...oriArr];
+
+  windowSize = Modernizr.mq("(min-width: 768px)") ? 'desktop' : 'mobile';
 
   let imgArr = [
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -155,9 +155,7 @@ window.onload = () => {
     [0, 0, 0, 0],
     [0, 0, 0, 0]
   ];
-  let testArr = Modernizr.mq("(min-width: 768px)")
-    ? [...imgArr]
-    : [...imgArrSm];
+  let testArr = (windowSize === 'desktop') ? [...imgArr] : [...imgArrSm];
 
   // Image overlay click event to close
   overlay.addEventListener("click", closeImgOver);
@@ -240,7 +238,7 @@ window.onload = () => {
     return Math.floor(Math.random() * limit) + 1;
   }
 
-  //Show the picture
+  //Show the picture clicked on
 
   function showPic(e) {
     if (e.currentTarget.id === 'static-img') {
@@ -251,6 +249,7 @@ window.onload = () => {
     overlay.classList.add("open");
   }
 
+  // Hide the picture when closed
   function closeImage() {
     overlay.classList.remove("open");
   }
@@ -260,15 +259,17 @@ window.onload = () => {
   const digits = Array.from({ length: 20 }, randomNumArr);
 
   function randomNumArr() {
+    //random numbers for horizont and vertical spaces to test
     let testDigits = [randomNumber(3), randomNumber(3)],
       fullRow = 0,
       full = false;
 
+    // if a row doesn't include 0, it must be full, if there is four(?!) full rows, we're done.
     testArr.forEach(row => {
       if (!row.includes(0)) {
         fullRow++;
       }
-      if (fullRow === 4) {
+      if ((windowSize === 'desktop' && fullRow === 4) || (windowSize === 'mobile' && fullRow === 6)) {
         full = true;
       }
     });
@@ -292,6 +293,7 @@ window.onload = () => {
 
     rowLoop: for (let i = 0; i <= testArr.length - 1; i++) {
       columnLoop: for (let j = 0; j <= testArr[i].length - 1; j++) {
+        // if it finds a 0, test to see if the current testDigits will fit in the spot
         if (testArr[i][j] === 0) {
           let throwV = testV;
 
