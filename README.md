@@ -1,5 +1,5 @@
 # Portfolio Site
-[http://dotethan.github.com](http://dotethan.github.com)
+[http://dotethan.github.io](http://dotethan.github.io)
 
 After realizing my [previous portfolio site](http://www.ethanstrauss.com) had grown beyond the realm of a "portfolio site", I went back to the drawing board and designed a fresh, simple and interesting design. 
 
