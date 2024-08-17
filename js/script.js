@@ -193,7 +193,7 @@ window.onload = () => {
 
     return `
 	        <div class="item h${h} v${v}">
-	          <img alt="Images from Ethans life" src="https://res.cloudinary.com/dotethan/image/upload/f_auto,fl_lossy,q_auto/Portfolio/${folder}/${randomUniqueNumber(oriArr.length, folder)}z.jpg">
+	          <img alt="Images from Ethans life" src="https://res.cloudinary.com/dotethan/image/upload/f_auto,fl_lossy,q_auto/Portfolio/${folder}/${randomUniqueNumber(oriArr.length, folder)}.jpg">
 	          <div class="item__overlay">
               <div class=\"item__overlay--icon\"></div>
 	          </div>
