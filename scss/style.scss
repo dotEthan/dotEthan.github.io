@@ -365,8 +365,8 @@ $header-font: "Comfortaa", cursive;
   }
 
   @media screen and (min-width: 992px) and (min-aspect-ratio: 16/8) {
-    width: 70vh;
-    height: 70vh;
+    width: 80vh;
+    height: 80vh;
   }
 
   img {
@@ -676,7 +676,7 @@ $header-font: "Comfortaa", cursive;
   }
 }
 
-#sp-area {
+#css-area {
   @media screen and (min-width: 768px) {
     right: -79.5vw;
 
@@ -687,7 +687,7 @@ $header-font: "Comfortaa", cursive;
   }
 }
 
-#css-area {
+#sp-area {
   @media screen and (min-width: 768px) {
     right: -83vw;
 
