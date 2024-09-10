@@ -11,6 +11,8 @@ Update: Updating to reflect my experience over the past 5 years.
 Finished. Code just needs to be run through babel, minimize, etc.
 
 **Update Underway**
+- Current Working On drops a pixel or two in mobile when clicked close. 
+- Old Sites need rehosting.
 
 ## Overview and Thoughts
 
