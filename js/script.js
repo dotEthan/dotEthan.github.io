@@ -1,4 +1,5 @@
 "use strict";
+import "../scss/style.scss";
 
 const titles = document.querySelectorAll(".title__contain");
 const bgOverlay = document.querySelector('.bg__overlay');
@@ -47,8 +48,6 @@ function openSaysMe(e) {
 function desktopPanelClickHandler(ele) {
 
   let clickedId = findId(ele);
-
-  // If ele is last open, close and dec lastopenID, otherwise inc or dec accordingly
   if (clickedId === lastOpenId) {
     ele.classList.remove('open');
     lastOpenId--;
