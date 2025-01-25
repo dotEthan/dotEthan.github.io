@@ -1,5 +1,5 @@
 "use strict";
-// import "../css/style.css";
+import '../scss/style.scss';
 
 const titles = document.querySelectorAll(".title__contain");
 const bgOverlay = document.querySelector('.bg__overlay');
