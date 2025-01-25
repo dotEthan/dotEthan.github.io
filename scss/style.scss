@@ -689,15 +689,10 @@ $header-font: "Comfortaa", cursive;
 
 #web-area {
   @media screen and (min-width: 768px) {
-    right: -83vw;
+    right: -82.99vw; 
 
     &.open {
       right: calc(93vw - (100vw - 100%));
-    }
-  }
-  @-moz-document url-prefix() {
-    @media screen and (min-width: 768px) {
-      right: -82.99vw; 
     }
   }
 }
