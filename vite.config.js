@@ -8,4 +8,9 @@ export default defineConfig({
       },
     },
   },
+  resolve: {
+    alias: {
+      '@scss': '/scss', // Custom alias for easier path handling
+    },
+  },
 });
