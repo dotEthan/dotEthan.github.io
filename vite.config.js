@@ -5,7 +5,13 @@ export default defineConfig({
   plugins: [],
   css: {
     preprocessorOptions: {
-      scss: {},
+      scss: {
+      },
     },
   },
+  build: {
+    rollupOptions: {
+      input: './index.html',  // Ensures correct input for the build process
+    }
+  }
 });
