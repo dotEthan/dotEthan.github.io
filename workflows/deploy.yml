@@ -1,25 +1,39 @@
-name: Deploy to GitHub Pages
+name: Build and Deploy to GitHub Pages
+
 on:
   push:
     branches:
-      - master
+      - development  # Trigger on push to development branch
+
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
+
     steps:
+      # Checkout the code
       - name: Checkout repository
         uses: actions/checkout@v3
-      - name: Install Node.js
+
+      # Set up Node.js (adjust the version as needed)
+      - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 18
+
+      # Install dependencies
       - name: Install dependencies
         run: npm install
+
+      # Build the project (ensure it outputs to dist/)
       - name: Build the project
         run: npm run build
-      - name: Deploy to GitHub Pages
+
+      # Push the dist folder to the main branch for deployment
+      - name: Deploy to GitHub Pages (main branch)
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
-          publish_branch: gh-pages
+          publish_dir: ./dist  # Path to your dist folder
+          publish_branch: main  # Push to the main branch
+          user_name: 'GitHub Actions'
+          user_email: 'actions@github.com'
