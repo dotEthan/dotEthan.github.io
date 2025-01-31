@@ -1,21 +1,22 @@
-"use strict";
+'use strict';
+// import '../scss/style.scss';
 
-const titles = document.querySelectorAll(".title__contain");
+const titles = document.querySelectorAll('.title__contain');
 const bgOverlay = document.querySelector('.bg__overlay');
-const areas = document.querySelectorAll(".area__contain");
+const areas = document.querySelectorAll('.area__contain');
 const areasL = areas.length - 1;
 let lastOpenId = -1;
 let windowSize;
 
 // Add click listener to panel titles
-titles.forEach(title => title.addEventListener("click", openSaysMe));
+titles.forEach((title) => title.addEventListener('click', openSaysMe));
 
 // Add click listner to darked background overlay
-bgOverlay.addEventListener("click", closeTabs);
+bgOverlay.addEventListener('click', closeTabs);
 
 // Mobile functionality?
 function closeTabs() {
-  if (Modernizr.mq("(min-width: 768px)")) {
+  if (Modernizr.mq('(min-width: 768px)')) {
     desktopPanelClickHandler(-1);
   } else {
     mobilePanelClickHandler(-1);
@@ -24,28 +25,28 @@ function closeTabs() {
 
 function openSaysMe(e) {
   // Clicked Element's name
-  const clickedId = "#" + e.currentTarget.id;
+  const clickedId = '#' + e.currentTarget.id;
 
   // Mobile - Finding element id to open
-  const mobileEle = document.querySelector(clickedId.replace("-area", "").replace("-title", ""));
+  const mobileEle = document.querySelector(
+    clickedId.replace('-area', '').replace('-title', '')
+  );
 
   // Desktop - Finding element id to open
-  const desktopEle = document.querySelector(clickedId.replace("-title", "-area"));
+  const desktopEle = document.querySelector(
+    clickedId.replace('-title', '-area')
+  );
 
   // Big Screens
-  if (Modernizr.mq("(min-width: 768px)")) {
-
+  if (Modernizr.mq('(min-width: 768px)')) {
     desktopPanelClickHandler(desktopEle);
-
   } else {
-
     // Small screens
     mobilePanelClickHandler(mobileEle);
   }
 }
 
 function desktopPanelClickHandler(ele) {
-
   let clickedId = findId(ele);
   if (clickedId === lastOpenId) {
     ele.classList.remove('open');
@@ -60,23 +61,22 @@ function desktopPanelClickHandler(ele) {
 }
 
 function mobilePanelClickHandler(ele) {
-  const drawers = document.querySelectorAll(".drawer");
+  const drawers = document.querySelectorAll('.drawer');
 
-  drawers.forEach(drawer => {
-    if (drawer.id === ele.id && ele.classList.contains("open")) {
-
-      ele.classList.remove("open");
+  drawers.forEach((drawer) => {
+    if (drawer.id === ele.id && ele.classList.contains('open')) {
+      ele.classList.remove('open');
       lastOpenId--;
       return;
     }
 
-    if (drawer.id === ele.id && !drawer.classList.contains("open")) {
-      drawer.classList.add("open");
+    if (drawer.id === ele.id && !drawer.classList.contains('open')) {
+      drawer.classList.add('open');
       lastOpenId++;
     }
 
-    if (drawer.id !== ele.id && drawer.classList.contains("open")) {
-      drawer.classList.remove("open");
+    if (drawer.id !== ele.id && drawer.classList.contains('open')) {
+      drawer.classList.remove('open');
       lastOpenId--;
     }
   });
@@ -89,7 +89,8 @@ function bgToggle() {
   if (lastOpenId > -1) {
     if (!bgOverlay.classList.contains('open')) bgOverlay.classList.add('open');
   } else {
-    if (bgOverlay.classList.contains('open')) bgOverlay.classList.remove('open');
+    if (bgOverlay.classList.contains('open'))
+      bgOverlay.classList.remove('open');
   }
 }
 
@@ -104,7 +105,6 @@ function findId(ele) {
 function decSlideHandler(eleId) {
   for (let i = areasL; i >= 0; i--) {
     if (eleId === lastOpenId) {
-
     } else if (i >= eleId) {
       if (areas[i].classList.contains('open')) {
         areas[i].classList.remove('open');
@@ -117,7 +117,8 @@ function decSlideHandler(eleId) {
 function incSlideHandler(eleId) {
   for (let i = 0; i <= areasL; i++) {
     if (i <= eleId) {
-      if (!areas[i].classList.contains('open')) { // needed? Fail quietly or loudly?
+      if (!areas[i].classList.contains('open')) {
+        // needed? Fail quietly or loudly?
         areas[i].classList.add('open');
         lastOpenId++;
       }
@@ -128,22 +129,22 @@ function incSlideHandler(eleId) {
 // Gallery Creation
 
 window.onload = () => {
-  const gallery = document.querySelector(".gallery");
-  const overlay = document.querySelector(".overlay");
-  const overlayImage = overlay.querySelector("img");
-  const overlayClose = overlay.querySelector(".close");
+  const gallery = document.querySelector('.gallery');
+  const overlay = document.querySelector('.overlay');
+  const overlayImage = overlay.querySelector('img');
+  const overlayClose = overlay.querySelector('.close');
   let oriArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   let horzArr = [...oriArr];
   let vertArr = [...oriArr];
   let squareArr = [...oriArr];
 
-  windowSize = Modernizr.mq("(min-width: 768px)") ? 'desktop' : 'mobile';
+  windowSize = Modernizr.mq('(min-width: 768px)') ? 'desktop' : 'mobile';
 
   let imgArr = [
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 1, 1, 0, 0, 0, 0],
     [0, 0, 0, 0, 1, 1, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   ];
   let imgArrSm = [
     [0, 0, 0, 0],
@@ -151,16 +152,16 @@ window.onload = () => {
     [0, 1, 1, 0],
     [0, 1, 1, 0],
     [0, 0, 0, 0],
-    [0, 0, 0, 0]
+    [0, 0, 0, 0],
   ];
-  let testArr = (windowSize === 'desktop') ? [...imgArr] : [...imgArrSm];
+  let testArr = windowSize === 'desktop' ? [...imgArr] : [...imgArrSm];
 
   // Image overlay click event to close
-  overlay.addEventListener("click", closeImgOver);
+  overlay.addEventListener('click', closeImgOver);
 
   function closeImgOver(e) {
     if (e.target.classList.contains('overlay')) {
-      overlay.classList.remove("open");
+      overlay.classList.remove('open');
     }
   }
 
@@ -169,14 +170,14 @@ window.onload = () => {
   document.onkeydown = function (evt) {
     evt = evt || window.event;
     var isEscape = false;
-    if ("key" in evt) {
-      isEscape = evt.key == "Escape" || evt.key == "Esc";
+    if ('key' in evt) {
+      isEscape = evt.key == 'Escape' || evt.key == 'Esc';
     } else {
       isEscape = evt.keyCode == 27;
     }
 
     if (isEscape) {
-      overlay.classList.remove("open");
+      overlay.classList.remove('open');
       closeTabs();
     }
   };
@@ -184,14 +185,17 @@ window.onload = () => {
   // Create HTML for each Picture
 
   function generateHTML([h, v]) {
-    let folder = "square";
+    let folder = 'square';
 
-    if (h > v) folder = "horz";
-    if (h < v) folder = "vert";
+    if (h > v) folder = 'horz';
+    if (h < v) folder = 'vert';
 
     return `
 	        <div class="item h${h} v${v}">
-	          <img alt="Images from Ethans life" src="https://res.cloudinary.com/dotethan/image/upload/f_auto,fl_lossy,q_auto/Portfolio/${folder}/${randomUniqueNumber(oriArr.length, folder)}.jpg">
+	          <img alt="Images from Ethans life" src="https://res.cloudinary.com/dotethan/image/upload/f_auto,fl_lossy,q_auto/Portfolio/${folder}/${randomUniqueNumber(
+      oriArr.length,
+      folder
+    )}.jpg">
 	          <div class="item__overlay">
               <div class=\"item__overlay--icon\"></div>
 	          </div>
@@ -217,15 +221,15 @@ window.onload = () => {
   // Randomly grab existing picture
 
   function randomUniqueNumber(limit, type) {
-    if (type === "vert") {
+    if (type === 'vert') {
       if (vertArr.length === 0) vertArr = [...oriArr];
 
       return updateArr(vertArr, limit);
-    } else if (type === "horz") {
+    } else if (type === 'horz') {
       if (horzArr.length === 0) horzArr = [...oriArr];
 
       return updateArr(horzArr, limit);
-    } else if (type === "square") {
+    } else if (type === 'square') {
       if (squareArr.length === 0) squareArr = [...oriArr];
 
       return updateArr(squareArr, limit);
@@ -242,14 +246,14 @@ window.onload = () => {
     if (e.currentTarget.id === 'static-img') {
       return;
     }
-    const src = e.currentTarget.querySelector("img").src;
+    const src = e.currentTarget.querySelector('img').src;
     overlayImage.src = src;
-    overlay.classList.add("open");
+    overlay.classList.add('open');
   }
 
   // Hide the picture when closed
   function closeImage() {
-    overlay.classList.remove("open");
+    overlay.classList.remove('open');
   }
 
   //create an array of Horizontal and Vertical numbers to be tested
@@ -263,11 +267,14 @@ window.onload = () => {
       full = false;
 
     // if a row doesn't include 0, it must be full, if there is four(?!) full rows, we're done.
-    testArr.forEach(row => {
+    testArr.forEach((row) => {
       if (!row.includes(0)) {
         fullRow++;
       }
-      if ((windowSize === 'desktop' && fullRow === 4) || (windowSize === 'mobile' && fullRow === 6)) {
+      if (
+        (windowSize === 'desktop' && fullRow === 4) ||
+        (windowSize === 'mobile' && fullRow === 6)
+      ) {
         full = true;
       }
     });
@@ -332,13 +339,13 @@ window.onload = () => {
 
   // Create Gallery HTML and apply
 
-  const html = digits.map(generateHTML).join("");
+  const html = digits.map(generateHTML).join('');
 
   gallery.innerHTML = gallery.innerHTML + html;
 
-  const items = document.querySelectorAll(".item");
+  const items = document.querySelectorAll('.item');
 
-  items.forEach(item => item.addEventListener("click", showPic));
+  items.forEach((item) => item.addEventListener('click', showPic));
 
-  overlayClose.addEventListener("click", closeImage);
+  overlayClose.addEventListener('click', closeImage);
 };
