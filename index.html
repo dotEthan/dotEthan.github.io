@@ -1,448 +1,575 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-128087057-1"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
 
-<head>
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async
-          src="https://www.googletagmanager.com/gtag/js?id=UA-128087057-1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
+      gtag('config', 'UA-128087057-1');
+    </script>
 
-    gtag('config', 'UA-128087057-1');
-  </script>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta property="og:url" content="dotethan.github.io" />
+    <meta property="og:title" content="Front End Developer: Ethan Strauss" />
+    <meta
+      property="og:description"
+      content="A simple portfolio on Ethan Strauss's work."
+    />
+    <meta
+      property="og:image"
+      content="https://res.cloudinary.com/dotethan/image/upload/v1537990220/Portfolio/bg4.jpg"
+    />
+    <title>Front End Developer: Ethan Strauss</title>
+    <script
+      defer
+      src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css"
+    />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png" />
+    <link
+      rel="apple-touch-icon"
+      sizes="60x60"
+      href="/icons/apple-icon-60x60.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="72x72"
+      href="/icons/apple-icon-72x72.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="76x76"
+      href="/icons/apple-icon-76x76.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="114x114"
+      href="/icons/apple-icon-114x114.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="120x120"
+      href="/icons/apple-icon-120x120.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="144x144"
+      href="/icons/apple-icon-144x144.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="152x152"
+      href="/icons/apple-icon-152x152.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/icons/apple-icon-180x180.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="/icons/android-icon-192x192.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/icons/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="96x96"
+      href="/icons/favicon-96x96.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/icons/favicon-16x16.png"
+    />
+    <link rel="manifest" href="/icons/manifest.json" />
+    <meta name="msapplication-TileColor" content="#ffffff" />
+    <meta name="msapplication-TileImage" content="/icons/ms-icon-144x144.png" />
+    <meta name="theme-color" content="#ffffff" />
+  </head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible"
-        content="IE=edge">
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1">
-  <meta property="og:url"
-        content="dotethan.github.io">
-  <meta property="og:title"
-        content="Front End Developer: Ethan Strauss">
-  <meta property="og:description"
-        content="A simple portfolio on Ethan Strauss's work.">
-  <meta property="og:image"
-        content="https://res.cloudinary.com/dotethan/image/upload/v1537990220/Portfolio/bg4.jpg">
-  <title>Front End Developer: Ethan Strauss</title>
-  <script defer
-          src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
-  <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">  
-  <link rel="stylesheet"
-        href="/css/style.css">
-  <link rel="apple-touch-icon"
-        sizes="57x57"
-        href="/apple-icon-57x57.png">
-  <link rel="apple-touch-icon"
-        sizes="60x60"
-        href="/icons/apple-icon-60x60.png">
-  <link rel="apple-touch-icon"
-        sizes="72x72"
-        href="/icons/apple-icon-72x72.png">
-  <link rel="apple-touch-icon"
-        sizes="76x76"
-        href="/icons/apple-icon-76x76.png">
-  <link rel="apple-touch-icon"
-        sizes="114x114"
-        href="/icons/apple-icon-114x114.png">
-  <link rel="apple-touch-icon"
-        sizes="120x120"
-        href="/icons/apple-icon-120x120.png">
-  <link rel="apple-touch-icon"
-        sizes="144x144"
-        href="/icons/apple-icon-144x144.png">
-  <link rel="apple-touch-icon"
-        sizes="152x152"
-        href="/icons/apple-icon-152x152.png">
-  <link rel="apple-touch-icon"
-        sizes="180x180"
-        href="/icons/apple-icon-180x180.png">
-  <link rel="icon"
-        type="image/png"
-        sizes="192x192"
-        href="/icons/android-icon-192x192.png">
-  <link rel="icon"
-        type="image/png"
-        sizes="32x32"
-        href="/icons/favicon-32x32.png">
-  <link rel="icon"
-        type="image/png"
-        sizes="96x96"
-        href="/icons/favicon-96x96.png">
-  <link rel="icon"
-        type="image/png"
-        sizes="16x16"
-        href="/icons/favicon-16x16.png">
-  <link rel="manifest"
-        href="/icons/manifest.json">
-  <meta name="msapplication-TileColor"
-        content="#ffffff">
-  <meta name="msapplication-TileImage"
-        content="/icons/ms-icon-144x144.png">
-  <meta name="theme-color"
-        content="#ffffff">
-
-</head>
-
-<body>
-  <div id="contain">
-    <div class="top">
-      <div class="top__nav">
-        <div class="top__nav__item ethan">.ethan</div>
-        <div class="top__nav__item">
-          <a href="https://github.com/dotEthan">
-            <div class="top__nav--extra"></div>
-            <div class="nav__icons"><i title="Github Repos Icon"
-                 class="fab fa-github-square"></i></div><span class="words">Github</span>
-          </a>
+  <body>
+    <div id="contain">
+      <div class="top">
+        <div class="top__nav">
+          <div class="top__nav__item ethan">.ethan</div>
+          <div class="top__nav__item">
+            <a href="https://github.com/dotEthan">
+              <div class="top__nav--extra"></div>
+              <div class="nav__icons">
+                <i title="Github Repos Icon" class="fab fa-github-square"></i>
+              </div>
+              <span class="words">Github</span>
+            </a>
+          </div>
+          <div class="top__nav__item">
+            <a href="http://www.ethanstrauss.com/docs/resume.pdf">
+              <div class="top__nav--extra"></div>
+              <div class="nav__icons">
+                <i title="Download Resume Icon" class="fas fa-file-pdf"></i>
+              </div>
+              <span class="words">Resume</span>
+            </a>
+          </div>
+          <div class="top__nav__item">
+            <a href="https://www.linkedin.com/in/estrauss2018/">
+              <div class="top__nav--extra"></div>
+              <div class="nav__icons">
+                <i title="Linkedin Profile Icon" class="fab fa-linkedin"></i>
+              </div>
+              <span class="words">Linked In</span>
+            </a>
+          </div>
         </div>
-        <div class="top__nav__item">
-          <a href="http://www.ethanstrauss.com/docs/resume.pdf">
-            <div class="top__nav--extra"></div>
-            <div class="nav__icons"><i title="Download Resume Icon"
-                 class="fas fa-file-pdf"></i></div><span class="words">Resume</span>
-          </a>
+      </div>
+      <div class="content__contain">
+        <div class="bg">
+          <div class="bg__overlay"></div>
+          <div class="overlay">
+            <div class="overlay-inner">
+              <div class="close">
+                <div class="close--lines"></div>
+              </div>
+              <img src="#" alt="Clicked on Image Overlay" />
+            </div>
+          </div>
+
+          <div class="container">
+            <div class="gallery">
+              <div id="static-img" class="item name">
+                <div class="name__contain">.ethan</div>
+              </div>
+            </div>
+          </div>
+          <div class="foot">
+            Copyright © 2024 Ethan Strauss <br /><a
+              href="mailto:estrauss2018@gmail.com"
+              >estrauss2018@gmail.com</a
+            >
+          </div>
         </div>
-        <div class="top__nav__item">
-          <a href="https://www.linkedin.com/in/estrauss2018/">
-            <div class="top__nav--extra"></div>
-            <div class="nav__icons"><i title="Linkedin Profile Icon"
-                 class="fab fa-linkedin"></i></div><span class="words">Linked
-              In</span>
-          </a>
+        <div class="dummy"></div>
+        <div class="areas">
+          <div id="css-area" class="area__contain">
+            <div id="css-title" class="csstitle title__contain">
+              <div class="title">Currently Working On:</div>
+            </div>
+            <div id="css" class="drawer">
+              <div class="pens__contain">
+                <div class="pens__column sp--pens">
+                  <div class="site__screen">
+                    <img
+                      src="https://res.cloudinary.com/dotethan/image/upload/f_auto,fl_lossy,q_auto/Portfolio/recipeapp.jpg"
+                      alt="Chef looking at Recipe Book"
+                    />
+                  </div>
+                  <div class="pen__texts">
+                    <div class="pen__text pen__title">
+                      <h1>"Recipeasy"</h1>
+                    </div>
+                    <div class="pen__text pen__title--sub">
+                      <h2>A Recipe App & Meal Planner</h2>
+                    </div>
+                    <div class="pen__text small">
+                      <strong>Why</strong>: As a hobbist chef, having a
+                      customizable place to store all my favourite recipes has
+                      always been a goal of mine.
+                    </div>
+                    <div class="pen__text small">
+                      <strong>Status</strong>: Currently expanding the unit
+                      tests and working on the final schema for backend
+                      intergration.
+                    </div>
+                    <div class="pen__text small">
+                      <strong>App URL</strong>:
+                      <a href="https://stupefied-morse-5e1233.netlify.app/"
+                        >Netlify Deploy</a
+                      ><br />
+                      <strong>Github URL (Frontend)</strong>:
+                      <a
+                        href="https://github.com/dotEthan/Recipeasy2"
+                        target="_blank"
+                        >Github Repo</a
+                      ><br />
+                      <strong>Github URL (Backend)</strong>:
+                      <a href="#">Github Repo (Coming Soon)</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="stack-details">
+                  <div class="frontend">
+                    <h1>Frontend Stack</h1>
+                    <ul>
+                      <li>Vue3</li>
+                      <li>Pinia</li>
+                      <li>SASS</li>
+                      <li>Vite</li>
+                      <li>Node.js</li>
+                      <li>Vitest</li>
+                      <li>Vue Testing Utils</li>
+                      <li>Cypress</li>
+                    </ul>
+                  </div>
+                  <div class="backend">
+                    <h1>Backend Stack</h1>
+                    <ul>
+                      <li>Node.js</li>
+                      <li>Express</li>
+                      <li>Postgres</li>
+                      <li>Vite</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="web-area" class="area__contain">
+            <div id="web-title" class="webtitle title__contain">
+              <div class="title">Websites</div>
+            </div>
+            <div id="web" class="drawer">
+              <div class="pens__contain">
+                <div class="pens__column first">
+                  <div class="site__screen">
+                    <img
+                      src="https://res.cloudinary.com/dotethan/image/upload/f_auto,fl_lossy,q_auto/Portfolio/pagesmautob.jpg"
+                      alt="dotethan webpage Screenshot"
+                    />
+                  </div>
+                  <div class="pen__texts">
+                    <div class="pen__text pen__title">
+                      <h1>.ethan</h1>
+                    </div>
+                    <div class="pen__text pen__title--sub">
+                      <h2>An autobiographical site</h2>
+                    </div>
+                    <div class="pen__text small">
+                      <strong>Why</strong>: After six months of study, I wanted
+                      to try and build a "single-page app", without React, I
+                      used multiple JS/CSS "themes" which greatly alter the
+                      content of the site.
+                    </div>
+                    <div class="pen__text small">
+                      <strong>Tools</strong>: HTML, CSS, JavaScript, Jquery,
+                      Modernizr, Adobe Photoshop
+                    </div>
+                    <div class="pen__text small">
+                      <strong>Status</strong>: 99% finished. Functionally
+                      complete. A few bugs due to resolution changes but minor.
+                    </div>
+                    <div class="pen__text small">
+                      <strong>URL</strong>:
+                      <a href="http://www.ethanstrauss.com" target="_blank"
+                        >ethanstrauss.com</a
+                      >
+                    </div>
+                  </div>
+                </div>
+                <div class="pens__column">
+                  <div class="site__screen">
+                    <img
+                      src="https://res.cloudinary.com/dotethan/image/upload/f_auto,fl_lossy,q_auto/Portfolio/pagesmpaper.jpg"
+                      alt="Paper Street Web Designs webpage Screenshot"
+                    />
+                  </div>
+                  <div class="pen__texts">
+                    <div class="pen__text pen__title">
+                      <h1>Paper Street Web Design</h1>
+                    </div>
+                    <div class="pen__text pen__title--sub">
+                      <h2>Web Design Company</h2>
+                    </div>
+                    <div class="pen__text small">
+                      <strong>Why</strong>: Made as a mock design for a Web
+                      Development start-up. I wanted to try and use flex-box to
+                      create a responsive site that would be aimed at pushing
+                      the customer towards the contact form.
+                    </div>
+                    <div class="pen__text small">
+                      <strong>Tools</strong>: HTML, CSS, JavaScript, Jquery,
+                      Modernizr, Adobe Photoshop
+                    </div>
+                    <div class="pen__text small">
+                      <strong>URL</strong>:
+                      <a
+                        href="http://www.ethanstrauss.com/paperstreetwebdesigns"
+                        target="_blank"
+                        >paperstreetwebdesigns.ca</a
+                      >
+                      (rehosted)
+                    </div>
+                  </div>
+                </div>
+                <div class="pens__column">
+                  <div class="site__screen">
+                    <img
+                      src="https://res.cloudinary.com/dotethan/image/upload/f_auto,fl_lossy,q_auto/Portfolio/pagesmfreggie.jpg"
+                      alt="Freggie webpage Screenshot"
+                    />
+                  </div>
+                  <div class="pen__texts">
+                    <div class="pen__text pen__title">
+                      <h1>Freggie Delivery</h1>
+                    </div>
+                    <div class="pen__text pen__title--sub">
+                      <h2>Food Delivery Hub</h2>
+                    </div>
+                    <div class="pen__text small">
+                      <strong>Why</strong>: Following up on a life long goal,
+                      Freggie was an entrepreneurial venture to test the
+                      community need for, and my passion for, cooking. The site
+                      was simply built and updated daily with new and fresh
+                      options.
+                    </div>
+                    <div class="pen__text small">
+                      <strong>Tools</strong>: HTML, CSS, JavaScript, PHP, Adobe
+                      Photoshop
+                    </div>
+                    <div class="pen__text small">
+                      <strong>URL</strong>:
+                      <a href="https://github.com/dotEthan/Freggie"
+                        >freggie.ca (Github Repo)</a
+                      >>
+                    </div>
+                  </div>
+                </div>
+                <div class="pens__column">
+                  <div class="site__screen">
+                    <img
+                      src="https://res.cloudinary.com/dotethan/image/upload/f_auto,fl_lossy,q_auto/Portfolio/pagesmuffda.jpg"
+                      alt="Uffda Soap webpage Screenshot"
+                    />
+                  </div>
+                  <div class="pen__texts">
+                    <div class="pen__text pen__title">
+                      <h1>Uffda Soap</h1>
+                    </div>
+                    <div class="pen__text pen__title--sub">
+                      <h2>Small Business Landing Page</h2>
+                    </div>
+                    <div class="pen__text small">
+                      <strong>Why</strong>: A local entrepreneur was trying to
+                      promote their handmade soaps online, so I offered to help
+                      build a site to make it easier. Originally built as a
+                      shopify site, they later decided to remove the purchasing
+                      options and create a simpler static site with email
+                      ordering instead.
+                    </div>
+                    <div class="pen__text small">
+                      <strong>Tools</strong>: HTML, CSS, JavaScript, PHP, Adobe
+                      Photoshop, Shopify
+                    </div>
+                    <div class="pen__text small">
+                      <strong>URL</strong>:
+                      <a href="http://www.uffdasoap.com" target="_blank"
+                        >uffdasoap.com (Currently Offline)</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="sp-area" class="area__contain">
+            <div id="sp-title" class="sptitle title__contain">
+              <div class="title">Projects & Games</div>
+            </div>
+            <div id="sp" class="drawer">
+              <div class="pens__contain">
+                <div class="pens__column sp--pens">
+                  <div class="site__screen">
+                    <img
+                      src="https://res.cloudinary.com/dotethan/image/upload/f_auto,fl_lossy,q_auto/Portfolio/mastermeend.jpg"
+                      alt="Mastermeend Title"
+                    />
+                  </div>
+                  <div class="pen__texts">
+                    <div class="pen__text pen__title">
+                      <h1>"Mastermeend"</h1>
+                    </div>
+                    <div class="pen__text pen__title--sub">
+                      <h2>A remake of "Mastermind"</h2>
+                    </div>
+                    <div class="pen__text small">
+                      <div class="pen__text--project">
+                        <strong>What is it</strong>: A puzzle game where one
+                        must use logic to solve the hidden pattern. I am looking
+                        to turn it into a horror themed game with adversary and
+                        gradual difficulty increase.
+                      </div>
+
+                      <div class="pen__text--project">
+                        <strong>Why</strong>: Growing up I always loved the game
+                        Mastermind, but found the challenge disappeared rather
+                        quickly and thought it would be great if I could add my
+                        own levels of challenge.
+                      </div>
+                    </div>
+                    <div class="pen__text small">
+                      <strong>Status</strong>: v1.0 Released. Need to create the
+                      new theme and expand the pattern to include shapes.
+                    </div>
+                    <div class="pen__text links">
+                      <strong>URL</strong>:
+                      <a
+                        href="https://github.com/dotEthan/Mastermeend"
+                        target="_blank"
+                        >Github Repository</a
+                      ><br />
+                      <strong>URL</strong>:
+                      <a
+                        href="https://codepen.io/dotEthan/live/oEJzvJ"
+                        target="_blank"
+                        >Codepen</a
+                      >
+                    </div>
+                  </div>
+                </div>
+                <div class="pens__column sp--pens">
+                  <div class="site__screen">
+                    <img
+                      src="https://res.cloudinary.com/dotethan/image/upload/f_auto,fl_lossy,q_auto/Portfolio/teetris.jpg"
+                      alt="Teetros Title"
+                    />
+                  </div>
+                  <div class="pen__texts">
+                    <div class="pen__text pen__title">
+                      <h1>"Teetros"</h1>
+                    </div>
+                    <div class="pen__text pen__title--sub">
+                      <h2>A remake of Tetris</h2>
+                    </div>
+                    <div class="pen__text small">
+                      <div class="pen__text--project">
+                        <strong>What is it</strong>: Drop down your pieces to
+                        create complete lines in order to make room for more
+                        pieces.
+                      </div>
+
+                      <div class="pen__text--project">
+                        <strong>Why</strong>: One of the first computers I owned
+                        only had the game Tetris on it, my brother and I had a
+                        long running battle to dominate the high score table.
+                      </div>
+                    </div>
+                    <div class="pen__text small">
+                      <strong>Status</strong>: Functional but needs a persistent
+                      High Score table, with a "Reset" button and "Stop"
+                      functionality. I also have some ideas on how to make it
+                      more interesting by turning it into factory sorting game
+                      with power ups, proper levels and more.
+                    </div>
+                    <div class="pen__text links">
+                      <strong>URL</strong>:
+                      <a
+                        href="https://github.com/dotEthan/Teetros"
+                        target="_blank"
+                        >Github Repository</a
+                      ><br />
+                      <strong>URL</strong>:
+                      <a
+                        href="https://codepen.io/dotEthan/live/a6f47d6557fc8b11f9edc904fa4e1646"
+                        target="_blank"
+                        >Codepen</a
+                      >
+                    </div>
+                  </div>
+                </div>
+                <div class="pens__column sp--pens">
+                  <div class="site__screen">
+                    <img
+                      src="https://res.cloudinary.com/dotethan/image/upload/f_auto,fl_lossy,q_auto/Portfolio/100days.jpg"
+                      alt="100 days of CSS Title"
+                    />
+                  </div>
+                  <div class="pen__texts">
+                    <div class="pen__text pen__title">
+                      <h1>100 Days of CSS</h1>
+                    </div>
+                    <div class="pen__text pen__title--sub">
+                      <h2>CSS3 animation practice</h2>
+                    </div>
+                    <div class="pen__text small">
+                      <strong>Why</strong>: As my break from web development
+                      coincided with the release of CSS3's advance
+                      functionality, I felt I didn't have a secure enough grasp
+                      of CSS transitions and keyframes, along with the pseudo
+                      "before" & "after" classes.
+                    </div>
+                    <div class="pen__text small">
+                      <strong>URL</strong>:
+                      <a
+                        href="http://dotethan.github.io/100daysofcss"
+                        target="_blank"
+                        >100 Days of CSS: Redux</a
+                      >
+                    </div>
+                  </div>
+                </div>
+                <div class="pens__column sp--pens">
+                  <div class="site__screen">
+                    <img
+                      src="https://res.cloudinary.com/dotethan/image/upload/f_auto,fl_lossy,q_auto/Portfolio/js30.jpg"
+                      alt="JavaScript 30 Title"
+                    />
+                  </div>
+                  <div class="pen__texts">
+                    <div class="pen__text pen__title">
+                      <h1>Javascript 30</h1>
+                    </div>
+                    <div class="pen__text pen__title--sub">
+                      <h2>
+                        <a href="https://javascript30.com/"
+                          >Wes Bos's ES60 Practice Courses</a
+                        >
+                      </h2>
+                    </div>
+                    <div class="pen__text small">
+                      <strong>Why</strong>: Along with missing the release of
+                      CSS3, I did not get the benefit of working with the newest
+                      Javascript updates (ES6). As many of the additions, such
+                      as the added array methods, arrow functions and
+                      destructuring, change much of how Javascript is written,
+                      JS30 seemed like a great course to jump back in.
+                    </div>
+                    <div class="pen__text small">
+                      <strong>URL</strong>:
+                      <a href="https://github.com/dotEthan/JS30" target="_blank"
+                        >Github Repository</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    <div class="content__contain">
-      <div class="bg">
-        <div class="bg__overlay"></div>
-        <div class="overlay">
-          <div class="overlay-inner">
-            <div class="close">
-              <div class="close--lines"></div>
-            </div>
-            <img src="#"
-                 alt="Clicked on Image Overlay">
-          </div>
-        </div>
 
-        <div class="container">
-          <div class="gallery">
-            <div id="static-img"
-                 class="item name">
-              <div class="name__contain">.ethan</div>
-            </div>
-          </div>
-        </div>
-        <div class="foot">Copyright © 2024 Ethan Strauss
-          <br><a href="mailto:estrauss2018@gmail.com">estrauss2018@gmail.com</a></div>
-      </div>
-      <div class="dummy"></div>
-      <div class="areas">
-        <div id="css-area"
-             class="area__contain">
-          <div id="css-title"
-               class="csstitle title__contain">
-            <div class="title">Currently Working On:</div>
-          </div>
-          <div id="css"
-               class="drawer">
-            <div class="pens__contain">
-              <div class="pens__column  sp--pens">
-                <div class="site__screen">
-                  <img src="https://res.cloudinary.com/dotethan/image/upload/f_auto,fl_lossy,q_auto/Portfolio/recipeapp.jpg"
-                       alt="Chef looking at Recipe">
-                </div>
-                <div class="pen__texts">
-                  <div class="pen__text pen__title">
-                    <h1>"Recipeasy"</h1>
-                  </div>
-                  <div class="pen__text pen__title--sub">
-                    <h2>A Recipe App & Meal Planner</h2>
-                  </div>
-                  <div class="pen__text small">
-                    <strong>Why</strong>: As a hobbist chef I've always found it hard to find a good recipe app that not
-                    only allows me to store my recipes, but can also sort based on ingredients and create meal plans
-                    using those sorting methods.
-                  </div>
-                  <div class="pen__text small">
-                    <strong>Status</strong>: Basic functionality is working. Responsive redesign and TDD implementation
-                    under way. Meal planning functionality to follow.
-                  </div>
-                  <div class="pen__text small">
-                    <strong>URL</strong>: <a href="https://stupefied-morse-5e1233.netlify.app/">Netlify Deploy</a><br>
-                    <strong>URL</strong>: <a href="https://github.com/dotEthan/Recipeasy2"
-                       target="_blank">Github Repo</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div id="web-area"
-             class="area__contain">
-          <div id="web-title"
-               class="webtitle title__contain">
-            <div class="title">Websites</div>
-          </div>
-          <div id="web"
-               class="drawer">
-            <div class="pens__contain">
-              <div class="pens__column first">
-                <div class="site__screen">
-                  <img src="https://res.cloudinary.com/dotethan/image/upload/f_auto,fl_lossy,q_auto/Portfolio/pagesmautob.jpg"
-                       alt="dotethan webpage Screenshot">
-                </div>
-                <div class="pen__texts">
-                  <div class="pen__text pen__title">
-                    <h1>.ethan</h1>
-                  </div>
-                  <div class="pen__text pen__title--sub">
-                    <h2>An autobiographical site</h2>
-                  </div>
-                  <div class="pen__text small">
-                    <strong>Why</strong>: After six months of study, I wanted to try and build a "single-page app",
-                    without React, I used multiple JS/CSS "themes" which greatly alter the content of the site. 
-                  </div>
-                  <div class="pen__text small">
-                    <strong>Tools</strong>: HTML, CSS, JavaScript, Jquery, Modernizr, Adobe Photoshop
-                  </div>
-                  <div class="pen__text small">
-                    <strong>Status</strong>: 99% finished. Functionally complete. A few bugs due to resolution changes but minor. 
-                  </div>
-                  <div class="pen__text small">
-                    <strong>URL</strong>: <a href="http://www.ethanstrauss.com"
-                       target="_blank">ethanstrauss.com</a>
-                  </div>
-                </div>
-              </div>
-              <div class="pens__column">
-                <div class="site__screen">
-                  <img src="https://res.cloudinary.com/dotethan/image/upload/f_auto,fl_lossy,q_auto/Portfolio/pagesmpaper.jpg"
-                       alt="Paper Street Web Designs webpage Screenshot">
-                </div>
-                <div class="pen__texts">
-                  <div class="pen__text pen__title">
-                    <h1>Paper Street Web Design</h1>
-                  </div>
-                  <div class="pen__text pen__title--sub">
-                    <h2>Web Design Company</h2>
-                  </div>
-                  <div class="pen__text small">
-                    <strong>Why</strong>: Made as a mock design for a Web Development start-up. I wanted to try and use
-                    flex-box to create a responsive site that would be aimed at pushing the customer towards the
-                    contact form.
-                  </div>
-                  <div class="pen__text small">
-                    <strong>Tools</strong>: HTML, CSS, JavaScript, Jquery, Modernizr, Adobe Photoshop
-                  </div>
-                  <div class="pen__text small">
-                    <strong>URL</strong>: <a href="http://www.ethanstrauss.com/paperstreetwebdesigns"
-                       target="_blank">paperstreetwebdesigns.ca</a> (rehosted)
-                  </div>
-                </div>
-              </div>
-              <div class="pens__column">
-                <div class="site__screen">
-                  <img src="https://res.cloudinary.com/dotethan/image/upload/f_auto,fl_lossy,q_auto/Portfolio/pagesmfreggie.jpg"
-                       alt="Freggie webpage Screenshot">
-                </div>
-                <div class="pen__texts">
-                  <div class="pen__text pen__title">
-                    <h1>Freggie Delivery</h1>
-                  </div>
-                  <div class="pen__text pen__title--sub">
-                    <h2>Food Delivery Hub</h2>
-                  </div>
-                  <div class="pen__text small">
-                    <strong>Why</strong>: Following up on a life long goal, Freggie was an entrepreneurial venture to
-                    test the community need for, and my passion for, cooking. The site was simply built and updated
-                    daily with new and fresh options.
-                  </div>
-                  <div class="pen__text small">
-                    <strong>Tools</strong>: HTML, CSS, JavaScript, PHP, Adobe Photoshop
-                  </div>
-                  <div class="pen__text small">
-                    <strong>URL</strong>: <a href="https://github.com/dotEthan/Freggie">freggie.ca (Github Repo)</a>>
-                  </div>
-                </div>
-              </div>
-              <div class="pens__column">
-                <div class="site__screen">
-                  <img src="https://res.cloudinary.com/dotethan/image/upload/f_auto,fl_lossy,q_auto/Portfolio/pagesmuffda.jpg"
-                       alt="Uffda Soap webpage Screenshot">
-                </div>
-                <div class="pen__texts">
-                  <div class="pen__text pen__title">
-                    <h1>Uffda Soap</h1>
-                  </div>
-                  <div class="pen__text pen__title--sub">
-                    <h2>Small Business Landing Page</h2>
-                  </div>
-                  <div class="pen__text small">
-                    <strong>Why</strong>: A local entrepreneur was trying to promote their handmade
-                    soaps online, so I offered to help build a site to make it easier. Originally built as a shopify
-                    site, they later decided to remove the purchasing options and create a simpler static site with
-                    email ordering instead.
-                  </div>
-                  <div class="pen__text small">
-                    <strong>Tools</strong>: HTML, CSS, JavaScript, PHP, Adobe Photoshop, Shopify
-                  </div>
-                  <div class="pen__text small">
-                    <strong>URL</strong>: <a href="http://www.uffdasoap.com"
-                       target="_blank">uffdasoap.com (Currently Offline)</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div id="sp-area"
-             class="area__contain">
-          <div id="sp-title"
-               class="sptitle title__contain">
-            <div class="title">Projects  & Games</div>
-          </div>
-          <div id="sp"
-               class="drawer">
-            <div class="pens__contain">
-              <div class="pens__column  sp--pens">
-                <div class="site__screen">
-                  <img src="https://res.cloudinary.com/dotethan/image/upload/f_auto,fl_lossy,q_auto/Portfolio/mastermeend.jpg"
-                       alt="Mastermeend Title">
-                </div>
-                <div class="pen__texts">
-                  <div class="pen__text pen__title">
-                    <h1>"Mastermeend"</h1>
-                  </div>
-                  <div class="pen__text pen__title--sub">
-                    <h2>A remake of "Mastermind"</h2>
-                  </div>
-                  <div class="pen__text small">
-                    <div class="pen__text--project">
-                      <strong>What is it</strong>: A puzzle game where one must use logic to solve the hidden pattern.
-                      I am looking to turn it into a horror themed game with adversary and gradual difficulty increase.
-                    </div>
-
-                    <div class="pen__text--project">
-                      <strong>Why</strong>: Growing up I always loved the game Mastermind, but found the challenge
-                      disappeared rather quickly and thought it would be great if I could add my own levels of
-                      challenge.
-                    </div>
-                  </div>
-                  <div class="pen__text small">
-                    <strong>Status</strong>: v1.0 Released. Need to create the new theme and expand the pattern to
-                    include shapes.
-                  </div>
-                  <div class="pen__text links">
-                    <strong>URL</strong>: <a href="https://github.com/dotEthan/Mastermeend"
-                       target="_blank">Github
-                      Repository</a><br>
-                    <strong>URL</strong>: <a href="https://codepen.io/dotEthan/live/oEJzvJ"
-                       target="_blank">Codepen</a>
-                  </div>
-                </div>
-              </div>
-              <div class="pens__column  sp--pens">
-                <div class="site__screen">
-                  <img src="https://res.cloudinary.com/dotethan/image/upload/f_auto,fl_lossy,q_auto/Portfolio/teetris.jpg"
-                       alt="Teetros Title">
-                </div>
-                <div class="pen__texts">
-                  <div class="pen__text pen__title">
-                    <h1>"Teetros"</h1>
-                  </div>
-                  <div class="pen__text pen__title--sub">
-                    <h2>A remake of Tetris</h2>
-                  </div>
-                  <div class="pen__text small">
-                    <div class="pen__text--project">
-                      <strong>What is it</strong>: Drop down your pieces to create complete lines in order to make room
-                      for more pieces.
-                    </div>
-
-                    <div class="pen__text--project">
-                      <strong>Why</strong>: One of the first computers I owned only had the game Tetris on it, my
-                      brother and I had a long running battle to dominate the high score table.
-                    </div>
-                  </div>
-                  <div class="pen__text small">
-                    <strong>Status</strong>: Functional but needs a persistent High Score table, with a "Reset"
-                    button and "Stop" functionality. I also have some ideas
-                    on how to make it more interesting by turning it into factory sorting game with power ups, proper
-                    levels and more.
-                  </div>
-                  <div class="pen__text links">
-                    <strong>URL</strong>: <a href="https://github.com/dotEthan/Teetros"
-                       target="_blank">Github
-                      Repository</a><br>
-                    <strong>URL</strong>: <a href="https://codepen.io/dotEthan/live/a6f47d6557fc8b11f9edc904fa4e1646"
-                       target="_blank">Codepen</a>
-                  </div>
-                </div>
-              </div>
-              <div class="pens__column  sp--pens">
-                <div class="site__screen">
-                  <img src="https://res.cloudinary.com/dotethan/image/upload/f_auto,fl_lossy,q_auto/Portfolio/100days.jpg"
-                       alt="100 days of CSS Title">
-                </div>
-                <div class="pen__texts">
-                  <div class="pen__text pen__title">
-                    <h1>100 Days of CSS</h1>
-                  </div>
-                  <div class="pen__text pen__title--sub">
-                    <h2>CSS3 animation practice</h2>
-                  </div>
-                  <div class="pen__text small">
-                    <strong>Why</strong>: As my break from web development coincided with the release of CSS3's advance
-                    functionality, I felt I didn't have a secure enough grasp of CSS transitions and keyframes, along
-                    with the pseudo "before" & "after" classes.
-                  </div>
-                  <div class="pen__text small">
-                    <strong>URL</strong>: <a href="http://dotethan.github.io/100daysofcss"
-                       target="_blank">100 Days of
-                      CSS: Redux</a>
-                  </div>
-                </div>
-              </div>
-              <div class="pens__column  sp--pens">
-                <div class="site__screen">
-                  <img src="https://res.cloudinary.com/dotethan/image/upload/f_auto,fl_lossy,q_auto/Portfolio/js30.jpg"
-                       alt="JavaScript 30 Title">
-                </div>
-                <div class="pen__texts">
-                  <div class="pen__text pen__title">
-                    <h1>Javascript 30</h1>
-                  </div>
-                  <div class="pen__text pen__title--sub">
-                    <h2><a href="https://javascript30.com/">Wes Bos's ES60 Practice Courses</a></h2>
-                  </div>
-                  <div class="pen__text small">
-                    <strong>Why</strong>: Along with missing the release of CSS3, I did not get the benefit of working
-                    with the newest Javascript updates (ES6). As many of the additions, such as the added array
-                    methods, arrow
-                    functions and destructuring, change much of how Javascript is written, JS30 seemed like a great
-                    course to jump back in.
-                  </div>
-                  <div class="pen__text small">
-                    <strong>URL</strong>: <a href="https://github.com/dotEthan/JS30"
-                       target="_blank">Github Repository</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <script type="module" src="js/script.js"></script>
-  <script type="module" src="js/modernizr.js"></script>
-
-</body>
-
+    <script type="module" src="js/script.js"></script>
+    <script type="module" src="js/modernizr.js"></script>
+  </body>
 </html>
