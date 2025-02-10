@@ -671,7 +671,7 @@ $header-font: "Comfortaa", cursive;
 
   @media screen and (min-width: 768px) {
     height: 92vh;
-    width: 3.5vw;
+    width: 3.6vw;
     font-size: 1em;
   }
 }
@@ -776,6 +776,11 @@ $header-font: "Comfortaa", cursive;
   width: 100%;
   position: relative;
   top: 50px;
+
+  
+  @media screen and (min-width: 768px) {
+    top: 0px;
+  }
 }
 
 .stack-details {
@@ -783,6 +788,7 @@ $header-font: "Comfortaa", cursive;
   flex-direction: row;
   justify-content: space-around;
   color: black;
+  padding: 30px 30px;
 
   h1 {
     font-size: 1.3em;
@@ -838,6 +844,35 @@ $header-font: "Comfortaa", cursive;
       background-color: transparent;
     }
   }
+}
+
+.recipeasy-contain {
+  padding-bottom: 0;
+}
+
+.stack {
+  display: flex;
+  align-items: center;
+  
+  ul {
+    list-style-position: inside;
+  }
+}
+.stack-list {
+  display: flex;
+  flex-wrap: wrap;
+
+  li {
+    margin: 0 3px;
+  }
+}
+
+.backend {
+  flex: 40%;
+}
+
+.frontend {
+  flex: 60%;
 }
 
 .site__screen {
