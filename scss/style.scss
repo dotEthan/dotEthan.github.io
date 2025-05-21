@@ -1125,6 +1125,12 @@ $header-font: "Comfortaa", cursive;
   }
 }
 
+.subtitle {
+ display: block;
+ font-size: 0.5em;
+ font-weight: 400;
+}
+
 .pen__text--project {
   margin-bottom: 2%;
 }
